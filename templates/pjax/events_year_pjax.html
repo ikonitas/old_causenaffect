@@ -1,0 +1,8 @@
+{% block content %}
+<div class="content">
+    <h2> {{ year }} <h2>
+    {% for event in events_year %}
+    <div class="title_archive"><a href="/events/{{ event.slug }}">{{ event.title }}</a></div>
+    {% endfor %}
+</div>
+{% endblock %}

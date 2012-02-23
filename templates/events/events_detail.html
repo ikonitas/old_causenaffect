@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="clear"></div>
+         <div id="event">
+             <div class="title">
+             <a href="/events/{{ event.slug }}"><p>{{ event.title }}</p></a>
+             </div>
+          <div class="share_logos">
+              <a title="twitter" rel="external-new-window" href="//twitter.com/share?text={{ event.title }} -&amp;url=http://www.causenaffect.co.uk/events/{{ event.slug }}" class="share_tw"></a>
+              <a title="facebook" rel="external-new-window" href="//www.facebook.com/share.php?u=http://www.causenaffect.co.uk/events/{{ event.slug }}" target="_blank" class="share_fb"></a>
+          </div>
+             <span class="signature">Posted by {{ event.author }} on {{ event.pub_date|date:'F j'}}</span>
+             <br/>
+         {% if event.flayer_thumb %}
+         <div class="event_border">
+         <div class="thumb">
+             <a href="{{ MEDIA_URL }}{{ event.flayer }}" rel="prettyPhoto" title="{{ event.title }}">
+                 <img src="{{MEDIA_URL}}{{ event.flayer_thumb }}" alt="{{ event.title  }}"/>
+             </a>
+         </div>
+         {% endif %}
+         <div class="event_info"><p>INFO: {{ event.body|safe }}</p></div>
+         <div class="event_info_wrapper">
+          <div class="event_date"><p>DATE: {{ event.event_date|date:'F j'}}</p></div>
+          <div class="event_time"><p>TIME: {{ event.time|time:'H:i'}}</p></div>
+          <div class="event_price"><p>PRICE: {{ event.price }}</p></div>
+         </div>
+         <!--
+          <div class="event_price"<p>PRICE: £{{event.price}}</p></div> -->
+       </div>
+      </div>
+{% endblock %}
+{% block archive %}
+
+{% for year in archive.keys %}   
+<div class="archive_year"><a href="/events/{{year}}">{{ year }}</a></div>                     
+<div class="archive_whole"><a href="/events/archive/">VIEW FULL ARCHIVE</a></div>
+<div class="archive_months"></div>
+&nbsp;
+{% for month in archive.values %}
+{% for m in month %}             
+    <a class="archive_a" href="/events/{{ year }}/{{ m|lower }}/">{{ m }}</a>
+
+{% endfor %}               
+{% endfor %}                     
+{% endfor %}
+{% endblock %}

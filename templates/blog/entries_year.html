@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_class %}home-page{% endblock %}
+
+{% block content %}
+
+<div id="content">
+    <h2> {{ year }} <h2>
+    {% for event in events_year %}
+        <p>{{ event.title }}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

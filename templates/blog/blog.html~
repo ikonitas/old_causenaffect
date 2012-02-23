@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block active_section_2 %}class="blog_meniu active"{% endblock %}
+
+
+
+{% block content %}
+
+    <a href="/blog">HOme</a>
+    <a href="/events">Events<a/>
+    {% for entry in entries %}
+    {{ entry.title }}
+    {% endfor %}
+
+        
+
+{% endblock %}
+

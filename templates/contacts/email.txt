@@ -1,0 +1,5 @@
+Sender name : {{ name }}
+Sender email: {{ email }}
+Subject     : {{ subject }}
+
+{{ message }}

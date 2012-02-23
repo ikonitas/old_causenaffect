@@ -1,0 +1,66 @@
+{% block content %}
+<div class="clear"></div>
+         {% for event in events.object_list %} 
+         <div id="event">
+             <div class="title">
+             <a href="/events/{{ event.slug }}"><p>{{ event.title }}</p></a>
+             
+         </div>
+         <div class="share_logos">
+             <a title="twitter" rel="external-new-window" href="//twitter.com/share?text={{ event.title }} -&amp;url=http://www.causenaffect.co.uk/events/{{ event.slug }}" class="share_tw"></a>
+             <a title="facebook" rel="external-new-window" href="//www.facebook.com/share.php?u=http://www.causenaffect.co.uk/events/{{ event.slug }}" class="share_fb"></a>
+         </div> 
+             <span class="signature">Posted by {{ event.author }} on {{ event.pub_date|date:'F j'}}</span>
+             <br/>
+         <div class="event_border">
+         {% if event.flayer_thumb %}
+         <div class="thumb">
+             <a href="{{ MEDIA_URL }}{{ event.flayer }}" rel="prettyPhoto" title="{{ event.title }}">
+                 <img src="{{MEDIA_URL}}{{ event.flayer_thumb }}" alt="{{ event.title  }}"/>
+             </a>
+         </div>
+         {% endif %}
+         <div class="event_info"><p>INFO: {{ event.body|safe }}</p></div>
+         <div class="event_info_wrapper">
+          <div class="event_date"><p>DATE: {{ event.event_date|date:'F j'}}</p></div>
+          <div class="event_time"><p>TIME: {{ event.time|time:'H:i'}}</p></div>
+          <div class="event_price"><p>PRICE: £{{ event.price }}</p></div>
+         </div>
+       </div>
+      </div>
+         {% endfor %}
+<div class="pagination">                                                                    
+    <span class="step-links">
+        {% if events.has_previous %}                                                        
+            <a class="previous" href="/events/?page={{ events.previous_page_number }}">previous</a> 
+        {% endif %}                                                                         
+                                                                                            
+        <span class="current">                                                              
+            Page {{ events.number }} of {{ events.paginator.num_pages }}.                   
+        </span>                                                                             
+                                                                                            
+        {% if events.has_next %}                                                            
+            <a class="next" href="/events/?page={{ events.next_page_number }}">next</a>             
+        {% endif %}                                                                         
+    </span>                        
+
+</div>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+show_title: true,
+theme: 'light_rounded', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+});
+              });
+</script>
+
+<script>
+$(document).ready(function() {
+    $('a[rel=external-new-window]').click(function(e){
+    e.preventDefault();
+    window.open(this.href, "myWindowName", "width=600, height=400");
+    return false;
+  });
+});
+</script>
+{% endblock %}

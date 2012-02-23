@@ -1,0 +1,37 @@
+{% block content %}
+<br/>
+         {% for event in events.object_list %}                                                                     
+         <div id="event">
+             <div class="title">
+             <a href="{{ event.slug }}"><p>{{ event.title }}</p></a>
+             </div>
+         {% if event.flayer_thumb %}
+         <div class="thumb">
+             <a href="{{ MEDIA_URL }}{{ event.flayer }}" rel="prettyPhoto" title="{{ event.title }}">
+                 <img src="{{MEDIA_URL}}{{ event.flayer_thumb }}" alt="{{ event.title  }}"/>
+             </a>
+         </div>
+         {% endif %}
+          <div class="event_date"><p>DATE: {{ event.event_date|date:'F j'}}</p></div>
+          <div class="event_time"><p>TIME: {{ event.time|time:'H:i'}}</p></div>
+          <div class="event_price"<p>PRICE: £{{event.price}}</p></div>
+          <div class="event_info"><p>INFO: {{ event.body|safe }}</p>
+          </div>
+  </div>
+         {% endfor %}
+<div class="pagination">                                                                    
+    <span class="step-links">
+        {% if events.has_previous %}                                                        
+            <a class="previous" href="?page={{ events.previous_page_number }}">previous</a> 
+        {% endif %}                                                                         
+                                                                                            
+        <span class="current">                                                              
+            Page {{ events.number }} of {{ events.paginator.num_pages }}.                   
+        </span>                                                                             
+                                                                                            
+        {% if events.has_next %}                                                            
+            <a class="next" href="?page={{ events.next_page_number }}">next</a>             
+        {% endif %}                                                                         
+    </span>                                                                                 
+</div>                                                                                      
+{% endblock %}

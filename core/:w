@@ -1,0 +1,8 @@
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils import simplejson
+
+@csrf_exempt
+def archive(request):
+    post = request.POST['arch']
+    return HttpResponse("pavyko", content_type="text/javscript")

@@ -1,0 +1,47 @@
+{% extends "enter_base.html" %}
+{% load i18n %}
+{% block page_class %}home-page{% endblock %}
+{% block css %} <link rel="stylesheet" href="{{ MEDIA_URL }}css/enter.css" />{% endblock %}
+{% block header %}{% endblock %}
+{% block body_class %}fade{% endblock %}
+{% block content %}
+        <div id="right">
+            <div class="top"></div>
+            <div class="middle"><a href="events" class="transition">ENTER</a></div>
+            <div class="bottom"></div>
+        </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/custom.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var myInterval = false;
+        $('.middle').mouseover(function(){
+            myInterval = setInterval(function(){
+                $('.middle').effect('highlight',{color: '#6fc7c1'},300);
+            },300);
+
+            $('.middle').mouseout(function(){
+                clearInterval(myInterval);
+                myInterval = false; 
+            });
+    });
+    });
+</script>
+
+<script>
+        $('.middle').click(function(){
+            window.location=$(this).find('a').attr('href');
+            return false;
+    });
+</script>
+<script>
+/*$(document).ready(function(){
+    $('#nav_bar').prepend('<audio src="{{ MEDIA_URL }}alley.mp3" loop controls autoplay preload></audio>');
+});*/
+</script>
+{% endblock %}

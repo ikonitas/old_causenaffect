@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for gallery in galleries.object_list %}
+<div id="gallery">
+  <div class="gallery_cover">
+      <a rel="prettyPhoto" href="{{ gallery.album_cover.image.url }}" title="{{ gallery.album_cover.title }}">
+        <img src="{{ gallery.album_cover.get_thumbnail_url }}" title="{{ gallery.album_cover.title }}" alt="{{ gallery.album_cover.title }}" />
+      </a>
+ </div>
+ <div class="gallery_title">
+     {{ gallery.title }}
+     <span class="watch"><a href="#" onclick="$.prettyPhoto.open({{ gallery.title|cut:" "}},{{ gallery.title|cut:" "}}_title,{{ gallery.title|cut:" "}}_title); return false"><p>[WATCH THE ALBUM]</p></a></span>
+ </div>
+</div>
+{% endfor %}
+<div class="pagination">
+    <span class="step-links">
+        {% if galleries.has_previous %}
+        <a class="previos" href="/gallery/?page={{ galleries.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ galleries.number }} of {{ galleries.paginator.num_pages }}.
+        </span>
+        {% if galleries.has_next %}
+        <a class="next" href="/gallery/?page={{ galleries.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+<br/>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" charset="utf-8">
+            {% for gallery in galleries.object_list %}
+               {{ gallery.title|cut:" " }}=[ {% for photo in gallery.photos.all %}'{{ photo.image.url }}',{% endfor %}];
+               {{ gallery.title|cut:" "}}_title = [ {% for photo in gallery.photos.all %} '{{photo.title }}',{% endfor %}];
+               {{ gallery.title|cut:" "}}_title = [ {% for photo in gallery.photos.all %} '{{photo.title }}',{% endfor %}];
+            {% endfor %}
+            </script>
+</script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function(){
+   $("a[rel^='prettyPhoto']").prettyPhoto({theme: 'facebook',
+slideshow:5000, 
+autoplay_slideshow:true});
+});
+</script>
+{% endblock %}
+

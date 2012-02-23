@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+         {% for event in events %}                                                                     
+         <div id="event">
+         <a href="{{ event.slug }}"><p>{{ event.title }}</p></a>
+         {% if event.flayer_thumb %}
+         <div class="thumb">
+         <img src="{{MEDIA_URL}}{{ event.flayer_thumb }}" />
+        </div>
+         {% endif %}
+
+         
+         <div class="event_date"><p>DATE: {{ event.pub_date|date:'F j'}}</p></div>
+         <div class="event_price"<p>PRICE: £5</p></div>
+         <div class="event_info"><p>INFO: {{ event.body }}</p>
+         </div> 
+ </div>
+
+        {% endfor %}
+
+{% endblock %}
+

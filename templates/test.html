@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_class %}home-page{% endblock %}
+{% block css %} <link rel="stylesheet" href="{{ MEDIA_URL }}css/enter.css" />{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
+
+        <div id="middle"></div>
+        <div id="bottom">
+            <div class="enter">
+                <div class="enter_txt"><h4><a href="home" class="transition">ENTER</a></h4></div>
+                <div class="enter_people"></div>
+            </div>
+            <div class="a_logo"></div>
+        </div>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/custom.js"></script>
+{% endblock %}

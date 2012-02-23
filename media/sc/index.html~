@@ -1,0 +1,182 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>blablabla</title>
+    
+    <meta name="description" content="aaaaaaaa" />
+    <meta name="author" content="sssssssssssssssss" />
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+    
+    <link rel="shortcut icon" href="../images/favicon.ico" />
+   <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
+   
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- Scroller Customize -->
+    <link href="../sc/jquery.mCustomScrollbar2.css" rel="stylesheet" type="text/css" />
+    <!-- END OF SCROLLER -->
+
+
+
+    <script src="../js/libs/modernizr-2.0.6.min.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+      <div id="top_bar"> </div>
+        <div id="left">
+            <div class="left_top"></div>
+            <div class="left_nav">
+<audio src="../alley1.ogg" controls>  
+  Your browser does not support the <code>audio</code> element.  
+</audio>  
+              <ul>
+                <li>TIME</li>
+              <li><a href="/events/">EVENTS</a></li>
+              <li><a href="/blog/">BLOG</a></li>
+              <li><a href="#">GALLERY</a></li>
+              <li><a href="#">MUSIC</a></li>
+              <li><a href="/blog">CONTACTS</a></li>
+              </ul>
+            </div>
+            <div class="left_bottom"></div>
+          <footer></footer>
+          </div>
+          <div id="right">
+            <div id="wrapper">
+              
+            
+                <div id="mcs_container">
+                    <div class="customScrollBox">
+                          <div class="container">
+                                    <div class="content">
+
+
+
+                                    </div>
+                          </div>
+
+                         <div class="dragger_container">
+                        <div class="dragger"></div>
+                        </div> 
+                     </div>     
+                       <a href="#" class="scrollUpBtn"></a> <a href="#" class="scrollDownBtn"></a>
+               </div>
+          </div>
+          </div>
+    </div> <!-- end of #container -->
+    <noscript>
+
+  <style type="text/css">
+
+    #mcs_container .customScrollBox{overflow:auto;}
+
+    #mcs_container .dragger_container{display:none;}
+
+  </style>
+
+</noscript>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/meniu.js"></script>
+    <script type="text/javascript" src="../js/jquery.pjax.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+    <script defer src="../js/plugins.js"></script>
+    <script defer src="../js/script.js"></script>
+    <!-- SCROLLBAR SCRIPTS -->
+    <script type="text/javascript" src="../sc/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="../sc/jquery.mousewheel.min.js"></script>
+    <script src="../sc/jquery.mCustomScrollbar.js"></script>
+    <script src="../sc/jquery.ba-resize.min.js"></script>
+    <!-- END OF SCROLLBAR SCRIPTS -->
+
+
+
+<script>
+$(window).load(function() {
+  mCustomScrollbars();
+});
+function mCustomScrollbars(){
+  /* 
+  malihu custom scrollbar function parameters: 
+  1) scroll type (values: "vertical" or "horizontal")
+  2) scroll easing amount (0 for no easing) 
+  3) scroll easing type 
+  4) extra bottom scrolling space for vertical scroll type only (minimum value: 1)
+  5) scrollbar height/width adjustment (values: "auto" or "fixed")
+  6) mouse-wheel support (values: "yes" or "no")
+  7) scrolling via buttons support (values: "yes" or "no")
+  8) buttons scrolling speed (values: 1-20, 1 being the slowest)
+  */
+  $("#mcs_container").mCustomScrollbar("vertical",600,"easeOutCirc",1.00,"fixed","yes","yes",20); 
+}
+/* function to fix the -10000 pixel limit of jquery.animate */
+$.fx.prototype.cur = function(){
+    if ( this.elem[this.prop] != null && (!this.elem.style || this.elem.style[this.prop] == null) ) {
+      return this.elem[ this.prop ];
+    }
+    var r = parseFloat( jQuery.css( this.elem, this.prop ) );
+    return typeof r == 'undefined' ? 0 : r;
+}
+/* function to load new content dynamically */
+function LoadNewContent(id,file){
+  $("#"+id+" .customScrollBox .content").load(file,function(){
+    mCustomScrollbars();
+  });
+}
+</script>
+
+
+
+
+<script>
+direction = "right";
+$(document).ready(function(){
+
+  $('li a').pjax('.content');
+  $('body')
+    .bind('start.pjax', function() {
+      $('.content').show("slide", { direction: direction });  
+    })
+    .bind('end.pjax', function() {
+      direction = (direction == "right" ? "right" : "right"); 
+    });
+
+});
+   </script>
+
+
+
+
+
+
+
+    <script>                           
+//      $(document).ready(function(){    
+//        console.log("load done");
+//        console.log("worker");
+//        $('a').pjax('#content');
+//
+//    });                                
+//  </script>                            
+     <script> // Change UA-XXXXX-X to be your site's ID
+      window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
+      Modernizr.load({
+        load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+      });
+    </script>
+
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+    <![endif]-->
+</body>
+</html>

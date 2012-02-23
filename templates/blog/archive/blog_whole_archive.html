@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{% for year_dict in archive_list %}
+    {% for year_date, months_list in year_dict.items %}
+<h2>{{ year_date }}</h2>
+        {% for month_list in months_list %}
+            {% for month_name, entries in month_list.items %}
+                <h3>{{ month_name }}</h3>
+                {% for entry in entries %}
+    <div class="title_archive"><a href={{ entry.get_absolute_url }}>{{ entry.title }}</a></div>
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endblock %}
+{% block archive %}                                                                                    
+{% for year in archive.keys %}
+<div class="archive_year"><a href="/blog/{{year}}">{{ year }}</a></div>
+<div class="archive_whole"><a href="/blog/archive/">VIEW FULL ARCHIVE</a></div>
+<div class="archive_months"></div>
+&nbsp;&nbsp;
+{% for month in archive.values %}
+{% for m in month %}
+<a class="archive_a" href="/blog/{{ year }}/{{ m|lower }}/">{{ m }}</a>
+
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endblock %}                             

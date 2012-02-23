@@ -1,0 +1,30 @@
+{% block content %}
+<div class="clear"></div>
+    <div id="blog">
+        <div class="title">
+            <a href="/blog/{{ blog.slug }}"><p>{{ blog.title }}</p></a>
+        </div>
+            <span class="signature">Posted by {{ blog.author }} on {{ blog.pub_date|date:'F j'}}</span>
+            <br/>
+        {% if blog.image %}
+        <div class="blog_image">
+            <a href="{{ MEDIA_URL }}{{ blog.image }}" rel="prettyPhoto" title="{{ blog.title }}">
+                <img src="{{ MEDIA_URL}}{{ blog.image_blog }}" alt="{{ blog.title }}" />
+            </a>
+        </div>
+        {% endif%}
+        <div class="blog_body">
+            {{ blog.body|safe }}
+        </div>
+    </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+show_title: true,
+theme: 'light_rounded', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+});
+              });
+</script>
+
+{% endblock %}

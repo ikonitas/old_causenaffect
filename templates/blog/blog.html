@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="clear"></div>
+    {% for blog in entries.object_list %}
+    <div id="blog">
+        <div class="title">
+            <a href="/blog/{{ blog.slug }}"><p>{{ blog.title }}</p></a>
+        </div>
+        <div class="share_logos">            
+         <a title="twitter" rel="external-new-window" href="//twitter.com/share?text={{ blog.title }} -&amp;url=http://www.causenaffect.co.uk/blog/{{ blog.slug }}" class="share_tw"></a>
+              <a title="facebook" rel="external-new-window" href="//www.facebook.com/share.php?u=http://www.causenaffect.co.uk/blog/{{ blog.slug }}" target="_blank" class="share_fb"></a>
+          </div> 
+
+            <span class="signature">Posted by {{ blog.author }} on {{ blog.pub_date|date:'F j'}}</span>
+        {% if blog.image %}
+        <div class="blog_image">
+            <a href="{{ MEDIA_URL }}{{ blog.image }}" rel="prettyPhoto" title="{{ blog.title }}">
+                <img src="{{ MEDIA_URL}}{{ blog.image_blog }}" alt="{{ blog.title }}" />
+            </a>
+        </div>
+        {% endif%}
+        <div class="blog_body">
+            {{ blog.body|safe }}
+        </div>
+    </div>
+    {% endfor %}
+
+<div class="pagination">
+    <span class="step_links">
+        {% if entries.has_previous %}
+            <a class="previous" href="/blog/?page={{ entries.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ entries.number }} of {{ entries.paginator.num_pages }}.
+        </span>
+
+        {% if entries.has_next %}
+            <a class="next" href="/blog/?page={{ entries.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+show_title: true,
+theme: 'light_rounded', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+});
+              });
+</script>
+
+
+
+
+
+{% endblock %}
+{% block archive %}
+{% for year in archive.keys %}   
+<div class="archive_year"><a href="/blog/{{year}}">{{ year }}</a></div>                     
+<div class="archive_whole"><a href="/blog/archive/">VIEW FULL ARCHIVE</a></div>
+<div class="archive_months"></div>
+&nbsp;
+{% for month in archive.values %}
+{% for m in month %}             
+<a class="archive_a" href="{{ year }}/{{ m|lower }}/">{{ m }}</a>         
+
+{% endfor %}               
+{% endfor %}                     
+{% endfor %}
+{% endblock %}                                                                                         
+

@@ -1,0 +1,15 @@
+{% block content %}
+{% for year_dict in archive_list %}
+    {% for year_date, months_list in year_dict.items %}
+<h2>{{ year_date }}</h2>
+        {% for month_list in months_list %}
+            {% for month_name, entries in month_list.items %}
+                <h3><p class="indented">{{ month_name }}</p></h3>
+                {% for entry in entries %}
+                <p class="indented-more"><a href=/blog/{{ entry.slug }}>{{ entry.title }}</a></p>
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endblock %}
