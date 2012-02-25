@@ -4,7 +4,7 @@ $(document).ready(function(){
         $('.fade').fadeIn(3500);
 
         $('a.transition').click(function(event){
-            event.prevenDefault();
+            if(event.preventDefault) event.preventDefault();
                 linkLocation = this.href;
                 $('.fade').fadeOut(2000, redirectPage);
         });

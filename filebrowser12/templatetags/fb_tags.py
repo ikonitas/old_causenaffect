@@ -143,6 +143,7 @@ register.tag(selectable)
 
 @register.simple_tag
 def custom_admin_media_prefix():
+    import ipdb; ipdb.set_trace()
     import django
     if "1.4" in django.get_version():
         from django.conf import settings
