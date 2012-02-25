@@ -1,5 +1,6 @@
 {% block content %}
 <div class="clear"></div>
+  {% if entries.object_list %}
     {% for blog in entries.object_list %}
     <div id="blog">
         <div class="title">
@@ -60,6 +61,6 @@ $(document).ready(function() {
 </script>
 
 
-
+{% endif %}
 {% endblock %}                                                                                         
 

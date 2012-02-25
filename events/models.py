@@ -33,10 +33,10 @@ class Event(models.Model):
         if self.pk is not None:
             orig = Event.objects.get(pk=self.pk)
             if orig.title != self.title:
-                #FACEBOOK
-                fb = facebook.Facebook(settings.FACEBOOK_API_KEY, settings.FACEBOOK_SECRET_KEY)
-                fb.session_key=settings.FACEBOOK_SESSION_KEY
-                fb.status.set(self.title + " " + self.get_full_url())
+                ##FACEBOOK
+                #fb = facebook.Facebook(settings.FACEBOOK_API_KEY, settings.FACEBOOK_SECRET_KEY)
+                #fb.session_key=settings.FACEBOOK_SESSION_KEY
+                #fb.status.set(self.title + " " + self.get_full_url())
                 
                 #TWITTER
                 api = twitter.Api(consumer_key=settings.TWITTER_CONSUMER_KEY, consumer_secret=settings.TWITTER_CONSUMER_SECRET, access_token_key=settings.TWITTER_ACCESS_TOKEN_KEY, access_token_secret=settings.TWITTER_ACCESS_TOKEN_SECRET)
@@ -44,9 +44,9 @@ class Event(models.Model):
 
         elif self.pk is None:
             #FACEBOOK
-            fb = facebook.Facebook(settings.FACEBOOK_API_KEY, settings.FACEBOOK_SECRET_KEY) 
-            fb.session_key=settings.FACEBOOK_SESSION_KEY                                    
-            fb.status.set(self.title + " " + self.get_full_url())                                       #TWITTER
+            #fb = facebook.Facebook(settings.FACEBOOK_API_KEY, settings.FACEBOOK_SECRET_KEY) 
+            #fb.session_key=settings.FACEBOOK_SESSION_KEY                                    
+            #fb.status.set(self.title + " " + self.get_full_url())                                       #TWITTER
             api = twitter.Api(consumer_key=settings.TWITTER_CONSUMER_KEY, consumer_secret=settings.TWITTER_CONSUMER_SECRET, access_token_key=settings.TWITTER_ACCESS_TOKEN_KEY, access_token_secret=settings.TWITTER_ACCESS_TOKEN_SECRET)
             api.PostUpdate("NEW EVENT   " + self.title +" " + self.get_full_url() )
                 
@@ -121,7 +121,7 @@ class Event(models.Model):
     
     class Meta:
         verbose_name_plural = "Entries"
-        ordering = ['-id']
+        ordering = ['-event_date','-event-date']
 
     def get_absolute_url(self):
         return "/events/{0}".format(self.slug)

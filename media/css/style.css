@@ -248,6 +248,7 @@ footer{
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   font-size: 14px;
   text-decoration:none;
+  font-weight: bold;
 }
 .title {
   color: #fff;
