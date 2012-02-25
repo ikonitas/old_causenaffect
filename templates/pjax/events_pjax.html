@@ -1,5 +1,6 @@
 {% block content %}
 <div class="clear"></div>
+	{% if events.object_list %}
          {% for event in events.object_list %} 
          <div id="event">
              <div class="title">
@@ -63,4 +64,5 @@ $(document).ready(function() {
   });
 });
 </script>
+{% endif %}
 {% endblock %}

@@ -28,6 +28,20 @@
     {% endblock %}
     
     <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29451935-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -75,9 +89,13 @@
   <div id="right">
     <div class="right_top">
       <div class="player">
+<<<<<<< HEAD
         <object height="200" width="92%"> <param name="movie" value="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fusers%2F2993269&amp;wmode=transparent&show_comments=true&amp;auto_play=false&amp;show_playcount=true&amp;show_artwork=false&amp;color=6fc7c1&theme_color=323232"></param> <param name="allowscriptaccess" value="always" wmode="transparent"></param><param name="wmode" value="transparent"><embed wmode="transparent" allowscriptaccess="always" height="200" src="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fusers%2F2993269&amp;show_comments=true&amp;auto_play=false&amp;show_playcount=true&amp;show_artwork=false&amp;wmode=transparent&color=6fc7c1&theme_color=323232" type="application/x-shockwave-flash" width="91%"></embed> </object>
 
         
+=======
+        <object height="200" width="92%" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"> <param name="movie" value="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fusers%2F2993269&amp;wmode=transparent&show_comments=true&amp;auto_play=false&amp;show_playcount=true&amp;show_artwork=false&amp;color=6fc7c1&theme_color=323232"></param> <param name="allowscriptaccess" value="always" wmode="transparent"></param><param name="wmode" value="transparent"><embed wmode="transparent" allowscriptaccess="always" height="200" src="https://player.soundcloud.com/player.swf?url=http%3A%2F%2Fapi.soundcloud.com%2Fusers%2F2993269&amp;show_comments=true&amp;auto_play=false&amp;show_playcount=true&amp;show_artwork=false&amp;wmode=transparent&color=6fc7c1&theme_color=323232" type="application/x-shockwave-flash" width="91%"></embed> </object>
+>>>>>>> 1262940c0051c52d0bb7afb49130d84d1bb1a2a5
       </div>
     </div>
     <div class="right_middle">
@@ -224,13 +242,6 @@ function show(){
  $('#player').fadeIn('slow');
 }
 setTimeout(show, 2000);
-</script>
-
- <script> // Change UA-XXXXX-X to be your site's ID
-  window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
-  Modernizr.load({
-    load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-  });
 </script>
 
 <script type="text/javascript" charset="utf-8">

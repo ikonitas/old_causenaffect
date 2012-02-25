@@ -10,14 +10,14 @@
           </div>
              <span class="signature">Posted by {{ event.author }} on {{ event.pub_date|date:'F j'}}</span>
              <br/>
-         {% if event.flayer_thumb %}
          <div class="event_border">
          <div class="thumb">
+         {% if event.flayer_thumb %}
              <a href="{{ MEDIA_URL }}{{ event.flayer }}" rel="prettyPhoto" title="{{ event.title }}">
                  <img src="{{MEDIA_URL}}{{ event.flayer_thumb }}" alt="{{ event.title  }}"/>
              </a>
-         </div>
          {% endif %}
+         </div>
          <div class="event_info"><p>INFO: {{ event.body|safe }}</p></div>
          <div class="event_info_wrapper">
           <div class="event_date"><p>DATE: {{ event.event_date|date:'F j'}}</p></div>

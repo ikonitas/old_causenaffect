@@ -12,6 +12,7 @@ INTERNAL_IPS = ('127.0.0.1',)
 APPEND_SLASH = True
 
 ADMINS = (
+	("Edvinas Jurevicius", "ikonitas@gmail.com"),
     # ('Your Name', 'your_email@example.com'),
 )
 
@@ -110,10 +111,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfResponseMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'kane.urls'
+ROOT_URLCONF = 'causenaffect.urls'
 
 TEMPLATE_DIRS = (
 
@@ -149,10 +149,8 @@ INSTALLED_APPS = (
     'blog',
     'events',
     'south',
-    'debug_toolbar',
     'pure_pagination',
     'core',
-    'tinymce',
     'filebrowser',
     'contacts',
     'captcha',
@@ -161,7 +159,7 @@ INSTALLED_APPS = (
     'biography',
     #'djpjax',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging

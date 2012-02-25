@@ -1,4 +1,5 @@
 {% block content %}
+{% if galleries.object_list %}
 {% for gallery in galleries.object_list %}
 <div id="gallery">
   <div class="gallery_cover">
@@ -41,4 +42,6 @@ slideshow:5000,
 autoplay_slideshow:true});
 });
 </script>
+{% endif %}
+<p></p>
 {% endblock %}

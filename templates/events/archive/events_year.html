@@ -13,6 +13,7 @@
 <div class="archive_whole"><a href="/events/archive/">VIEW FULL ARCHIVE</a></div>
 <div class="archive_months"></div>
 {% for month in archive.values %}
+&nbsp;
 {% for m in month %}
 <a class="archive_a" href="/events/{{ year }}/{{ m|lower }}/">{{ m }}</a>
 
