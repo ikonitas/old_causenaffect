@@ -1,4 +1,5 @@
 # Django settings for kane project.
+import socket
 import os
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__).decode('utf-8'))
 
@@ -113,7 +114,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
-ROOT_URLCONF = 'causenaffect.urls'
+if socket.gethostname() == "ed":
+    ROOT_URLCONF = 'urls'
+else:
+    ROOT_URLCONF = 'causenaffect.urls'
 
 TEMPLATE_DIRS = (
 

@@ -108,10 +108,10 @@ class Event(models.Model):
                     # photo aspect matches the destination ratio
                     image = image.resize(size, Image.ANTIALIAS)
 
-            image.save(self.get_thumbnail_path())
-            (a, b) = os.path.split(self.flayer.name)
-            self.flayer_thumb = a + '/thumbs/' + b
-            super(Event, self).save()
+                image.save(self.get_thumbnail_path())
+                (a, b) = os.path.split(self.flayer.name)
+                self.flayer_thumb = a + '/thumbs/' + b
+                super(Event, self).save()
     
     def get_thumbnail_path(self):
         (head, tail) = os.path.split(self.flayer.path)
@@ -121,7 +121,7 @@ class Event(models.Model):
     
     class Meta:
         verbose_name_plural = "Entries"
-        ordering = ['-event_date','-event-date']
+        ordering = ['-event_date']
 
     def get_absolute_url(self):
         return "/events/{0}".format(self.slug)
