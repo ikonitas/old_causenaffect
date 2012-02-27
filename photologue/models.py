@@ -394,18 +394,11 @@ class ImageModel(models.Model):
             return
         # Save the original format
         im_format = im.format
-        # Apply effect if found
-        if self.effect is not None:
-            im = self.effect.pre_process(im)
-        elif photosize.effect is not None:
-            im = photosize.effect.pre_process(im)
         # Resize/crop image
         if im.size != photosize.size and photosize.size != (0, 0):
             im = self.resize_image(im, photosize)
         # Apply watermark if found
         # Apply effect if found
-        if self.effect is not None:
-            im = self.effect.post_process(im)
         elif photosize.effect is not None:
             im = photosize.effect.post_process(im)
         # Save file
