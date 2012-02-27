@@ -22,12 +22,17 @@
     <!-- End of Pretty Photo css -->
     <!-- Scroller Customize -->
     <link href="{{ MEDIA_URL }}sc/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css" />
+    <link href="{{ MEDIA_URL }}js/jPlayer/skin/pink.flag/jplayer.pink.flag.css" rel="stylesheet" type="text/css" />
     <!-- END OF SCROLLER -->
 
 
     {% endblock %}
     
     <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ MEDIA_URL }}js/libs/jquery.min.js"><\/script>')</script>
+    <script src="{{ MEDIA_URL }}js/jPlayer/js/jquery.jplayer.min.js"></script>
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -46,10 +51,18 @@
 
 <body class="{% block body_class %}{% endblock %}">
 {% block body %}
+<div id='topbar'><span style="font-size:20px;font-family:'Trebuchet MS',Helvetica, sans-serif;"><p>MUSIC IS PLAYING</p></div>
 <div id="container">
   <div id="top_bar"></div>
   <div id="left">
-    <div class="left_top"></div>
+    <div class="left_top">
+      <div class="cart_wrapper">
+          <div class="cart_top"></div>
+          <div class="cart_middle"></div>
+          <a href="#"><div class="cart_bottom"></div></a>
+
+      </div>
+    </div>
     <div class="left_middle">
       <ul>
         <li><a href="/events/">EVENTS</a></li>
@@ -125,8 +138,6 @@
 </noscript>
     {% if debug %}{% include 'includes/debug.html' %}{% endif %}
     {% block javascript_library %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ MEDIA_URL }}js/libs/jquery.min.js"><\/script>')</script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
     <script type="text/javascript">
       var jq14 = $.noConflict(true);
@@ -147,6 +158,7 @@
 
     {% endblock %}
     {% block javascript %}{% endblock %}
+
 <script>
 jq14(window).load(function() {
   mCustomScrollbars();
@@ -194,7 +206,7 @@ $(document).ready(function(){
 direction = "right";
 $(document).ready(function(){
 
-  $('li a, .next, .previous, .title a, .archive_year a, .archive_a, .archive_whole a, .title_archive a').live('click', function(e){
+  $('.left_middle li a, .next, .previous, .title a, .archive_year a, .archive_a, .archive_whole a, .title_archive a').live('click', function(e){
     e.preventDefault();
     $('.content').show('slide', { direction: direction});
     var name = $(this).attr("href").match(/\w+/);

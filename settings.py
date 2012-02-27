@@ -161,6 +161,7 @@ INSTALLED_APPS = (
     'slideshow',
     'photologue',
     'biography',
+    'music',
     #'djpjax',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',

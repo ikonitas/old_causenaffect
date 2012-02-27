@@ -1,8 +1,72 @@
 {% block content %}
 <div class="clear"></div>
-<div id="music">
-    <div class="title" style="font-size:26px">Music under construction...</div>
-</div>
+{% for music in music_list %}
 
+<div id="music_samples">
+    <div id="jquery_jplayer_{{ music.id }}" class="jp-jplayer"></div>
+    <div id="jp_container_{{ music.id }}" class="pl_ps">
+        <div class="jp-progress">
+                <div class="jp-seek-bar">
+                        <div class="jp-play-bar"></div>
+                </div>
+        </div>
+    <ul class="jp-controls">
+    <li><a href="javascript:;" class="jp-play" tabindex="1"><img src="{{ MEDIA_URL }}img/player/play.png"/></a></li>
+    <li><a href="javascript:;" class="jp-pause" tabindex="1" style="display:none"><img src="{{ MEDIA_URL }}img/player/pause.png"/></a></li>
+    <li><a href="#"><img src="{{ MEDIA_URL }}img/player/basket.png"></a></li>
+    <li><span style="margin-left:8px">£{{ music.price }}</span></li>
+    <li><span style="margin-left:30px">{{ music.artist }} - {{ music.title }}</span></li>
+    {% if music.image %}
+    <li><span style="float:right; margin-top:-5px;margin-right:29px;"><a rel="prettyPhoto" title="{{ music.get_image_name }}" href="{{music.get_full_image_path}}"><img src="{{ MEDIA_URL }}{{ music.image }}" alt="{{ music.get_image_name }}"/></a></span></li>
+    {% endif %}
+    </ul>
+    <div class="jp-no-solution">
+        <span>Update Required</span>
+        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+    </div>
+    </div>
+
+<script>
+  $(document).ready(function(){
+    $("#jquery_jplayer_{{ music.id}}").jPlayer({
+        ready: function () {
+            $(this).jPlayer("setMedia", {
+                mp3: "{{music.track_sample.url }}"
+            });
+        },
+        play: function() { // To avoid both jPlayers playing together.
+            $(this).jPlayer("pauseOthers");
+        },
+        swfPath: "{{ MEDIA_URL }}/js/jPlayer/js/Jplayer.swf",
+        supplied: "mp3",
+        cssSelectorAncestor: "#jp_container_{{ music.id }}",
+        wmode: "window"
+    });
+});
+//]]>
+</script>
+
+</div>
+{% endfor %}
+     <script>
+       $(document).ready(function(){
+     $(".jp-play").click(function(){
+         $("#topbar").show();
+         $("#topbar").animate({height:65},"slow").delay(2000);
+         $("#topbar").animate({height:0},200);
+         $('#topbar').fadeOut(1);        
+ 
+     });
+ });
+ </script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+show_title: true,
+theme: 'light_rounded', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+});
+              });
+</script>
 
 {% endblock %}

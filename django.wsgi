@@ -1,12 +1,26 @@
 import os
 import sys
+import socket
 
-activate_this = os.path.join("/www/")
+if socket.gethostname() == "ed":
+    activate_this = os.path.join("/home/ed/Documents/html/Django/kanedj/")
 
-root = os.path.join(os.path.dirname(__file__),'/www')
-sys.path.insert(0, root)
-sys.path.append("/www/causenaffect/")
-os.environ["DJANGO_SETTINGS_MODULE"] = "causenaffect.settings"
+    root = os.path.join(os.path.dirname(__file__),"/home/ed/Documents/html/Django/kanedj")
+    sys.path.insert(0, root)
+    sys.path.append("/home/ed/Documents/html/Django/kanedj/kane/")
+    sys.path.append("/home/ed/Documents/html/Django/kanedj/lib/python2.7/site-packages/")
+    os.environ["DJANGO_SETTINGS_MODULE"] = "kane.settings"
 
-import django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+    import django.core.handlers.wsgi
+    application = django.core.handlers.wsgi.WSGIHandler()
+
+else:
+    activate_this = os.path.join("/www/")
+    
+    root = os.path.join(os.path.dirname(__file__),'/www')
+    sys.path.insert(0, root)
+    sys.path.append("/www/causenaffect/")
+    os.environ["DJANGO_SETTINGS_MODULE"] = "causenaffect.settings"
+    
+    import django.core.handlers.wsgi
+    application = django.core.handlers.wsgi.WSGIHandler()

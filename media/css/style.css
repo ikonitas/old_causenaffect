@@ -571,3 +571,50 @@ input:focus, textarea:focus {
 #music {
   margin-top: 10px;
 }
+#music_samples {
+  margin-top:8px;
+}
+ #music_samples ul li {
+    display:inline;
+    margin-top:5px;
+ }
+.jp-controls {
+  background-image:url('../img/player/player_box.png');
+  background-repeat: no-repeat;
+  width:523px;
+  height:62px;
+  padding-top:6px;
+  padding-left:6px;
+  font-size:14px
+}
+#topbar {
+  display:none;
+  background:#000;
+  color:white;
+  text-align:center;
+  position:fixed;
+  width:100%;
+  z-index:1;
+  opacity:0.8;
+}
+
+
+.cart_wrapper{
+  padding-top: 34px;
+  padding-left: 19px;
+}
+.cart_top{
+  background-image:url('../img/cart/cart_top.png');
+  width:310px;
+  height:43px;
+}
+.cart_middle{
+  background-image:url('../img/cart/cart_middle.png');
+  width: 313px;
+  height: 35px;
+}
+.cart_bottom{
+  background-image:url('../img/cart/cart_bottom.png');
+  width: 310px;
+  height: 15px;
+}

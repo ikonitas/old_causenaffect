@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var myInterval = false;
-    $('li').mouseover(function(){
+    var menu = $(".left_middle");
+    $('li', menu).mouseover(function(){
            e = this;
         myInterval = setInterval(function(){
             $(e).effect('highlight',{color: '#6fc7c1'},240);

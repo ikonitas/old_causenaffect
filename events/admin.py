@@ -2,6 +2,7 @@ from django.contrib import admin
 from events.models import Event
 
 class EventAdmin(admin.ModelAdmin):
+    list_display = ('title','time','price',)
     prepopulated_fields = {"slug":("title",)}
     
     class Media:
