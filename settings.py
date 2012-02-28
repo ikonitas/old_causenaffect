@@ -3,7 +3,7 @@ import socket
 import os
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__).decode('utf-8'))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False }
