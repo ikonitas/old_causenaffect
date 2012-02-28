@@ -51,10 +51,8 @@
      <script>
        $(document).ready(function(){
      $(".jp-play").click(function(){
-         $("#topbar").show();
-         $("#topbar").animate({height:65},"slow").delay(2000);
-         $("#topbar").animate({height:0},200);
-         $('#topbar').fadeOut(1);        
+        $('#topbar').slideDown(1000).delay(2000);
+        $('#topbar').slideUp(1000);
  
      });
  });
