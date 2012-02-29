@@ -3,8 +3,9 @@
 <div class="title_bio">
   <p>{{ biography.title }}</p>
 </div>
-
-{{ biography.body|safe }}
-<br/>
+<div class="biography_content">
+    {{ biography.body|safe }}
+    <br/>
+</div>
 
 {% endblock %}
