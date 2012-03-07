@@ -1,0 +1,59 @@
+{% extends "admin/change_form.html" %}
+
+{% block breadcrumbs %}
+<div class="hide_print breadcrumbs">
+     <a href="../../../">"Home"</a> &rsaquo;
+     <a href="../../">"Orders"</a> &rsaquo;
+     <a href="../">"Orders"</a> &rsaquo;
+     #{{ order.number }}
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <fieldset class="hide_print module aligned ">
+        <h2>Order Information</h2>
+        <div class="form-row">
+           <label>Order created:</label>{{ order.purchased_at}}
+        </div>
+       <h2>Customer Information</h2>
+       <div class="form-row">
+           <label>Full name:</label>  
+               {{ order.payer_full_name }}  
+       </div>
+       <div class="form-row">
+           <label>E-mail:</label>
+           {{ order.payer_email }}    
+       </div>
+    </fieldset>
+    <div class="inline-group">
+        <div class="tabular inline-related {% if forloop.last %}last-related{% endif %}">
+            <fieldset class="module">
+                <h2>Order lines</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colspan="1">Song</th>
+
+                                <th>Line price <span style="font-size: 0.8em; font-weight: normal;">(ex. VAT)</span></th>
+                                {% if order.has_discounted_lines %}
+                                <th>Discounted Line price <span style="font-size: 0.8em; font-weight: normal;">(ex. VAT)</span></th>
+                                {% endif %}
+                            </tr>
+                        </thead>
+                        {% for song in order.orderline_set.all %}
+                        <tr class="{% cycle row1,row2 %}">
+                            <td>{{ song.songs_pk.full_name }}</td>
+                            <td>&pound;{{ song.songs_pk.price }}</td>
+                        </tr>
+                        {% endfor %}                        
+                        <tr>
+                            <td align="right"><strong>Total:</strong></td>
+                            <td><strong>&pound;{{ order.total }}</strong></td>
+                        </tr>
+                    </table>
+            </fieldset>
+        </div>
+    </div>
+</div>
+{% endblock %}

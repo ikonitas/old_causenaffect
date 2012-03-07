@@ -52,15 +52,23 @@
 
 <body class="{% block body_class %}{% endblock %}">
 {% block body %}
-<div id='topbar'><span style="font-size:20px;font-family:'Trebuchet MS',Helvetica, sans-serif;"><p>MUSIC IS PLAYING</p></div>
+<div id='topbar'><span style="font-size:20px;font-family:'Trebuchet MS',Helvetica, sans-serif;"><p></p></div>
 <div id="container">
   <div id="top_bar"></div>
   <div id="left">
     <div class="left_top">
       <div class="cart_wrapper">
           <div class="cart_top"></div>
-          <div class="cart_middle"></div>
-          <a href="#"><div class="cart_bottom"></div></a>
+          <div class="cart_middle">
+            {% if songs_count %}
+            <div style='float:left;margin-left:30px;margin-top:6px;font-size:20px;color:#fff;' class='items_left'><span class='json_songs'>{{ songs_count }}</span>
+              <span class='little_song' style='font-size:12px;font-style:italic' class='small_item'>{% if songs_count == 1 %}song{% else %}songs{% endif %}</span></div>
+              <div style='float:right;font-size:20px;margin-top:6px;margin-right:30px;color:#fff' class='items_right'><span class='json_price'>£{{ basket_subtotal}}<span></div>
+            {% else %}
+            <div style="padding-top:5px;padding-left:70px;font-size:20px;font-style:italic;color:#fff" class="empty_cart">Your cart is empty</div>
+            {% endif %}
+          </div>
+          <div class="cart_bottom"><a class="view_bsk" style="padding-left:76px;padding-right:236px;" href="/music/cart"></a></div>
 
       </div>
     </div>
@@ -196,49 +204,15 @@ function LoadNewContent(id,file){
 
 <script>
 $(document).ready(function(){
-  var a = $('li a').click(function(){
+  var left_middle = $('.left_middle');
+  var a = $('li a',left_middle).click(function(){
     a.removeClass('letters');
     $(this).addClass('letters');
   });
 });
 </script>
 
-<script>
-direction = "right";
-$(document).ready(function(){
-
-  $('.categories li a, .left_middle li a, .next, .previous, .title a, .archive_year a, .archive_a, .archive_whole a, .title_archive a').live('click', function(e){
-    e.preventDefault();
-    $('.content').show('slide', { direction: direction});
-    var name = $(this).attr("href").match(/\w+/);
-    //var name = $(this).attr("href").replace(/\//g, '');
-    $('.archive').empty();
-    $.post("/archive/", { 'arch': name},
-    function(data){
-      $.each(data, function(key,value){
-        if (key.length == 0){
-          return false;
-        }
-        $('.archive').append('<div class="archive_year"><a href="/' +name+'/'+ key + '/">'+ key + '</a></div><div class="archive_whole"><a href="/'+name+'/archive/">VIEW FULL ARCHIVE</a></div><div class="archive_months"></div>&nbsp;&nbsp;');
-        for (var i =0; i < value.length; i++) {
-          var item = value[i];
-          /*$('.archive').append('<a href='+ key +'/' + item +'/'>'' + item + "</a>");
-          */
-          $('.archive').append('<a class="archive_a" href="/' +name+'/' +key+'/'+item+'/">' + item + '</a> ');
-        }
-      });
-    },"json");
-
-    $.pjax({
-            url: (this),
-            container: '.content' });
-    $('.content').fadeIn('slow', function(){
-      mCustomScrollbars();
-    });
-
-  });
-});
-</script>
+<script src="{{ MEDIA_URL}}js/mylibs/pjax_calls.js"></script>
 <!-- SoundCLoud Player load after its compeltely load -->
 <script>
 $(window).load(function(){

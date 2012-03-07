@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for song in order %}
+
+<p><a href="{{ song.songs_pk.full_track.url }}"> {{ song.songs_pk.full_name }} </a></p>
+
+{% endfor %}
+
+
+{% endblock %}

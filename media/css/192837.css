@@ -406,7 +406,7 @@ footer{
 .contact_form textarea {
   font-weight: bold;
 }
-input, textarea {
+.contact_form input, textarea {
   font-weight:bold;
   color: #fff;
   padding: 8px;
@@ -416,31 +416,30 @@ input, textarea {
   width: 200px;
   background: transparent;
   /*background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));*/
-  background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
   box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
   }
 
-textarea {
+.contact_form textarea {
   width: 400px;
   max-width: 400px;
   height: 140px;
   line-height: 150%;
   }
 
-input:hover, textarea:hover,
-input:focus, textarea:focus { 
+.contact_form input:hover, textarea:hover,
+.contact_form input:focus, textarea:focus { 
   border-color: #C9C9C9; 
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;
   }
 
-.form label { 
+.contct_form .form label { 
   margin-left: 10px; 
   color: #999999; 
   }
 
-.submit input {
+.contact_form .submit input {
   width: auto;
   padding: 9px 15px;
   background: #66cccc;
@@ -628,6 +627,7 @@ input:focus, textarea:focus {
 .ie7 .event_info_wrapper{
   margin-top: -40px;
 }
+<<<<<<< HEAD
 .categories {
   background-image:url('../img/music/deze.png');
   height:67px;
@@ -646,4 +646,11 @@ list-style-type:none;
 }
 .active {
   color: #000;
+}
+#paypal {
+  margin-top: 40px;
+}
+.error {
+  margin-top:20px;
+  font-size:20px;
 }
