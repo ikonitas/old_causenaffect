@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^captcha/', include('captcha.urls')),
 )
 
-if settings.DEBUG:
+if settings.HOSTNAME == "ed":
     urlpatterns += patterns('',
             (r'^media/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.MEDIA_ROOT,'show_indexes':True}),
             )

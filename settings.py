@@ -1,6 +1,9 @@
 # Django settings for kane project.
 import socket
 import os
+
+HOSTNAME = socket.gethostname()
+
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__).decode('utf-8'))
 
 DEBUG = False
