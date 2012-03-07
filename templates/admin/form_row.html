@@ -1,0 +1,11 @@
+<div class="form-row{% if field.errors %} errors{% endif %} {{ field.name }}">
+    {{ field.errors }}
+    <div class="field-box">
+    {% if field.is_checkbox %}
+        {{ field }}<label {% if field.field.required %}class="required" {% endif %}for="id_{{ field.name }}">{{ field.label }}</label>
+    {% else %}
+	   <label {% if field.field.required %}class="required" {% endif %}for="id_{{ field.name }}">{{ field.label }}:</label>{{ field }}
+    {% endif %}
+    {% if field.field.help_text %}<p class="help">{{ field.field.help_text|safe }}</p>{% endif %}
+    </div>
+</div>

@@ -1,11 +1,11 @@
 from django.db import models
 from music.models import Music
 
-class BasketItem(models.Model):
-    cart_id = models.CharField(max_length=50)
+class Basket(models.Model):
+    basket_id = models.CharField(max_length=500)
     date_added = models.DateTimeField(auto_now_add=True)
     quantity = models.IntegerField(default=1)
-    song  = models.ForeignKey('music.music', unique=True)
+    song  = models.ForeignKey(Music,related_name="song")
 
     class Meta:
         ordering = ['date_added']
@@ -23,9 +23,8 @@ class BasketItem(models.Model):
         return self.song.price
 
     def __unicode__(self):
-        return self.cart_id
+        return self.basket_id
 
     def augment_quantity(self, quantity):
         self.quantity = self.quantity + int(quantity)
         self.save()
-

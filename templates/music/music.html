@@ -9,7 +9,7 @@
     {% endfor %}
 </div>
 {% for music in music_list %}
-
+<form method="POST" action="." class="cart">{% csrf_token %}
 <div id="music_samples">
     <div id="jquery_jplayer_{{ music.id }}" class="jp-jplayer"></div>
     <div id="jp_container_{{ music.id }}" class="pl_ps">
@@ -18,10 +18,11 @@
                         <div class="jp-play-bar"></div>
                 </div>
         </div>
+
     <ul class="jp-controls">
     <li><a href="javascript:;" class="jp-play" tabindex="1"><img src="{{ MEDIA_URL }}img/player/play.png"/></a></li>
     <li><a href="javascript:;" class="jp-pause" tabindex="1" style="display:none"><img src="{{ MEDIA_URL }}img/player/pause.png"/></a></li>
-    <li><a href="#"><img src="{{ MEDIA_URL }}img/player/basket.png"></a></li>
+    <li><a class="basket" name="{{music.pk}}" href="#"><input type="hidden" name="song_id" value="{{music.pk}}" id="song_id" /><img src="{{ MEDIA_URL }}img/player/basket.png"></a></li>
     <li><span style="margin-left:8px">£{{ music.price }}</span></li>
     <li><span style="margin-left:30px">{{ music.artist }} - {{ music.title }}</span></li>
     {% if music.image %}
@@ -56,10 +57,12 @@
 
 
 </div>
+</form>
 {% endfor %}
      <script>
        $(document).ready(function(){
      $(".jp-play").click(function(){
+     $('#topbar p').text('MUSIC IS PLAYING');
       $('#topbar').slideDown(1000).delay(2000);
       $('#topbar').slideUp(1000);
  
@@ -68,24 +71,13 @@
  </script>
  <script>
      $(document).ready(function(){
-         var a = $('li a').click(function(){
-             a.removeClass('letters');
-             $(this).addClass('letters')
+         $('.basket').click(function(){
+             $('#topbar p').text("SONG ADDED");
+             $('#topbar').slideDown(1000).delay(2000);
+             $('#topbar').slideUp(1000);
          });
      });
- </script>
-<script>
-//var pathname = $(location).attr('pathname');
-// $(document).ready(function() {
-//urlRegExp = new RegExp(pathname.replace(/\/$/,''));
-// console.log("PATHANME " + urlRegExp);
-// $('.categories_li li a').each(function(){
-//       console.log(this);
-//         if(urlRegExp.test(this.href.replace(/\/$/,''))){
-//         $(this).addClass('active');
-//     }
-// });
-//     });
+
  </script>
 <script>
 $(document).ready(function(){
@@ -99,6 +91,29 @@ $(this).animate({backgroundColor: "#0AD",
 });
 });
 </script>
+<script>
+$(document).ready(function(){
+    $('.basket').live("click",(function(event){
+        $('.empty_cart').hide();
+        $('.cart_middle').empty();
+        $('.cart_middle').append("<div style='float:left;margin-left:30px;margin-top:6px;font-size:20px;color:#fff;' class='items_left'><span class='json_songs'></span> <span class='little_song' style='font-size:12px;font-style:italic' class='small_item'></span></div><div style='float:right;font-size:20px;margin-top:6px;margin-right:30px;color:#fff' class='items_right'><span class='json_price'><span></div>");
+        event.preventDefault();
 
+        $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name,'quantity':1},
+        function(data){
+    
+    $('.json_songs').text(data.basket_count_songs);
+        if (data.basket_count_songs == "1"){
+            $('.little_song').text(' song');
+}
+else {
+   $('.little_song').text(" songs");
+}
+   $('.json_price').text("£" + data.basket_subtotal);
+        }, "json");
+       
+    }));
+});  
+</script>
 
 {% endblock %}

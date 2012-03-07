@@ -25,6 +25,10 @@ class Music(models.Model):
     def __unicode__(self):
         return "{0} - {1}".format(self.artist, self.title)
 
+    def _full_name(self):
+        return self.artist + " - " + self.title
+    full_name = property(_full_name)
+
     def save(self, *args, **kwargs):
         super(Music, self).save()
         size = (38,38)

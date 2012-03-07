@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 from django.conf import settings
 from core.ajax_views import archive
+from basket.views import purchased
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -13,11 +14,12 @@ urlpatterns = patterns('',
     url(r'^gallery/',include('photologue.urls')),
     url(r'^contact/', include('contacts.urls')),
     url(r'^biography/', include('biography.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include('admin_urls')),
     url(r'^archive/$', archive),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/filebrowser/', include('filebrowser.urls')),
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^purchased/$', purchased),
 )
 
 if settings.HOSTNAME == "ed":

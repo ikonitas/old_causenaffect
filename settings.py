@@ -115,6 +115,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfResponseMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 if socket.gethostname() == "ed":
@@ -143,6 +144,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
      'django.contrib.messages.context_processors.messages',
      'slideshow.context_processors.images',
      'music.context_processors.categories',
+     'basket.context_processors.basket_items',
      )
 
 INSTALLED_APPS = (
@@ -152,12 +154,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'blog',
     'events',
     'south',
     'pure_pagination',
+    'basket',
     'core',
     'filebrowser',
     'contacts',
@@ -166,6 +168,8 @@ INSTALLED_APPS = (
     'photologue',
     'biography',
     'music',
+    'debug_toolbar',
+    'orders',
     #'djpjax',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
@@ -235,3 +239,12 @@ TWITTER_ACCESS_TOKEN_SECRET="mQmhi7Chv3BYsuFWAThwlHhDI7WqhYoixrQEvGf4"
 FACEBOOK_API_KEY =  280734208662299
 FACEBOOK_SECRET_KEY = "ae2cf8ac0b4056af62caa0d98d3a2785"
 FACEBOOK_SESSION_KEY = u'2.AQCao5OXnhlQd1VS.3600.1329955200.0-100000009533032'
+
+#PAYPAL
+PAYPAL_PDT_TOKEN = "bKss3aawW8Y3tsEp8kiRPoUF-08D8Gu659ZTfpTkNS3QDAd19LZOfmPbRRa"
+PAYPAL_EMAIL = 'ikonit_1330876747_biz@gmail.com'
+PAYPAL_RETURN_URL = 'http://127.0.0.1:8000/purchased/'
+
+PAYPAL_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+PAYPAL_PDT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+
