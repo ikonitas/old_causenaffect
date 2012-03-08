@@ -2,6 +2,16 @@ from django.db import models
 from PIL import  Image
 import os
 
+class Category(models.Model):
+    title = models.CharField(max_length=20)
+    date_added = models.DateField(auto_now_add="True",editable=False)
+    slug = models.SlugField(max_length=20, editable=True, help_text="Please do not edit this field as this field is going to be prepopulated from title")
+
+    def __unicode__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return "/music/"+self.slug
 
 class Music(models.Model):
     full_track = models.FileField(upload_to="music/")
@@ -9,6 +19,7 @@ class Music(models.Model):
     artist = models.CharField(default="Cause N Affect", max_length=50)
     title = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=4, decimal_places=2)
+    category = models.ForeignKey(Category, null=True, blank=True)
     image = models.ImageField(upload_to="music/images", blank=True, null=True)
 
     def __unicode__(self):

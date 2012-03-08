@@ -1,5 +1,11 @@
 {% block content %}
 <div class="clear"></div>
+<div class="categories">
+    <ul class="categories_li">
+    {% for category in categories %}
+    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+    {% endfor %}
+</div>
 {% for music in music_list %}
 
 <div id="music_samples">
@@ -46,25 +52,51 @@
 //]]>
 </script>
 
+
 </div>
 {% endfor %}
      <script>
        $(document).ready(function(){
      $(".jp-play").click(function(){
-        $('#topbar').slideDown(1000).delay(2000);
-        $('#topbar').slideUp(1000);
+      $('#topbar').slideDown(1000).delay(2000);
+      $('#topbar').slideUp(1000);
  
      });
  });
  </script>
+ <script>
+     $(document).ready(function(){
+         var a = $('li a').click(function(){
+             a.removeClass('letters');
+             $(this).addClass('letters')
+         });
+     });
+ </script>
+<script>
+//var pathname = $(location).attr('pathname');
+// $(document).ready(function() {
+//urlRegExp = new RegExp(pathname.replace(/\/$/,''));
+// console.log("PATHANME " + urlRegExp);
+// $('.categories_li li a').each(function(){
+//       console.log(this);
+//         if(urlRegExp.test(this.href.replace(/\/$/,''))){
+//         $(this).addClass('active');
+//     }
+// });
+//     });
+ </script>
+<script>
+$(document).ready(function(){
+  $('.categories_li li a').mouseover(
+function(){
+$(this).animate({backgroundColor: "#0AD",
+}, 300, function() {
+  $('.categories_li li a').css("backgroundColor","transparent");
 
-<script type="text/javascript" charset="utf-8">
-    $(document).ready(function(){
-            $("a[rel^='prettyPhoto']").prettyPhoto({
-show_title: true,
-theme: 'light_rounded', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
 });
-              });
+});
+});
 </script>
+
 
 {% endblock %}

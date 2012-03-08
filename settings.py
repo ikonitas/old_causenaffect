@@ -6,7 +6,7 @@ HOSTNAME = socket.gethostname()
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__).decode('utf-8'))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False }
@@ -142,6 +142,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
      'django.contrib.auth.context_processors.auth',
      'django.contrib.messages.context_processors.messages',
      'slideshow.context_processors.images',
+     'music.context_processors.categories',
      )
 
 INSTALLED_APPS = (
