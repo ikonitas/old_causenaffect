@@ -7,10 +7,11 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
 from captcha.fields import CaptchaField
+from django.http import HttpResponse
 from djpjax import pjax
 from django.template.response import TemplateResponse
 
-@pjax("contact_pjax.html")
+@pjax("pjax/contact_pjax.html")
 def contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
@@ -33,10 +34,8 @@ def contact(request):
             headers = {'Reply-To': email}
             msg = EmailMultiAlternatives(subject,text_content, from_email,to, headers=headers)
             msg.send()
-            return HttpResponseRedirect("/thanks/")
+            return HttpResponse("thanks");
     else:
         form = ContactForm()
 
     return TemplateResponse(request, "contacts/contact.html",{'form':form})
-#render_to_response('contacts/contact.html', {
-#        'form':form,}, context_instance=RequestContext(request))

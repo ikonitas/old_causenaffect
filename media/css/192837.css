@@ -1,4 +1,5 @@
 /* HTML5 ✰ Boilerplate
+ *
  * ==|== normalize ==========================================================
  */
 
@@ -399,9 +400,15 @@ footer{
 .contact_form {
   font-size: 13px;
   margin-top: 18px;
+  margin-left:60px;
+}
+.contact_form #id_captcha_1 {
+  width:320px;
 }
 .contact_form input {
   font-weight: bold;
+  width: 400px;
+  height: 12px;
 }
 .contact_form textarea {
   font-weight: bold;
@@ -444,6 +451,7 @@ input:focus, textarea:focus {
   width: auto;
   padding: 9px 15px;
   background: #66cccc;
+  height:32px;
   border: 0;
   font-size: 14px;
   color: #FFFFFF;
@@ -635,6 +643,9 @@ list-style-type:none;
 .categories_li a{
   color: #fff;
 }
-.active {
-  color: #000;
+.contact_form input::-webkit-input-placeholder, input::-moz-placeholder {
+      color:#fff;
+    }
+.contact_form textarea::-webkit-input-placeholder, input::-moz-placeholder {
+  color: #fff;
 }

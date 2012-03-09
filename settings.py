@@ -223,7 +223,7 @@ EMAIL_HOST_PASSWORD = 'sidabras0915'
 
 
 CAPTCHA_FONT_PATH = PROJECT_ROOT + "/media/fonts/Vera.ttf"
-CAPTCHA_FONT_SIZE = 30
+CAPTCHA_FONT_SIZE = 24
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
 
 
