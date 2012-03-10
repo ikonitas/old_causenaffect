@@ -13,9 +13,12 @@ from django.template.response import TemplateResponse
 @pjax("pjax/view_basket_pjax.html")
 def show_basket(request):
     if request.method == "POST":
+        import ipdb; ipdb.set_trace()
         postdata = request.POST.copy()
         if postdata['song_id']:
             utils.remove_from_basket(request)
+            basket_items = utils.get_basket_items(request)
+            basket_subtotal = utils.basket_subtotal(request)
     
     basket_items = utils.get_basket_items(request)
     basket_subtotal = utils.basket_subtotal(request)
