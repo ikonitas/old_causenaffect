@@ -1,31 +1,25 @@
 {% block content %}
-{% if basket_items %}
-<table style="width:100%;border-collapse:collapse; color:#fff;margin-top:20px;" summary="Your Shopping Cart" id="shopping_cart">
-		<caption style="text-align:left;font-size:x-large;margin-bottom:15px;color:#fff;">Your Shopping Cart</caption>
+
+<table summary="Your Shopping Cart" id="shopping_cart">
+		<caption>YOUR SHOPPING CART</caption>
 		<thead>
 			<tr>
-				<th style="color:#fff;background-color:#616161; text-align:left;" scope="col">Song</th>
-				<th style="color:#fff;background-color:#616161; text-align:left;" scope="col">Price</th>
-				<th style="color:#fff;background-color:#616161; text-align:right;" >Action</th>
+				<th class="first_th" scope="col">Song</th>
+				<th class="first_th" scope="col">Price</th>
+				<th class="first_th" scrope="col">Action</th>
 			</tr>
 		</thead>
 		<tfoot>
-			<tr><th></th></tr>
-			<tr><th></th></tr>
-			<tr><th></th></tr>
-			<tr><th></th></tr>
-			<tr><th></th></tr>
-			<tr><th></th></tr>
 			<tr>
-				<th class="right" colspan="2" style="text-align:left;">
+				<th class="right" colspan="2">
 					Cart Subtotal:
 				</th>
 				<th class="right" style="text-align:right;">
-					{{ basket_subtotal }}
+					£{{ basket_subtotal }}
 				</th>
 			</tr>
 			<tr>
-				<th class="right" colspan="10" style="text-align:right">
+				<th colspan="10" style="text-align:right">
                      <form name="paypal" id="paypal" action="{{ paypal_url }}" method="post">                                 
                          <input type="hidden" name="return" value="{{ paypal_return_url }}">
                      <input type="hidden" name="cancel_return" value="http://127.0.0.1:8000/">
@@ -38,16 +32,17 @@
                      <input type="hidden" name="item_name_{{ forloop.counter }}" value="{{ song.name}}">
                      <input type="hidden" name="amount_{{ forloop.counter }}" value="{{ song.price }}">
                      {% endfor %}
-                     <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!   ">
+                     <input type="image" src="{{ MEDIA_URL }}img/cart/paypal.png" name="submit" alt="Make payments with PayPal - it's fast, free and secure!   ">
                       </form>
               <br> 
 				</th>
 			</tr>
 		</tfoot>
+		{% if basket_items %}
 		{% for song in basket_items %}
 		<tbody>
 				<tr>
-					<td style="text-align:left;padding:3px">
+					<td>
 						<a style="color:#fff" href="/product/electric-guitar/" class="cart">
 							{{ song.name }}
 						</a>
@@ -56,13 +51,13 @@
 					<td style="text-align:right;">
 					<form method="post" action="." class="cart">{% csrf_token %}
 						<input type="hidden" name="song_id" value="{{ song.id }}"/>
-						<input type="image" src="http://cdn2.iconfinder.com/data/icons/aspneticons_v1.0_Nov2006/delete_16x16.gif" name="submit" value="Remove" />
+						<input class="remove" type="submit" name="submit" value="Remove" />
 					</form>
 				</tr>
             
             
 		</tbody>
 		{% endfor %}
+		{% endif %}
 	</table>
-	{% endif %}
 {% endblock %}
