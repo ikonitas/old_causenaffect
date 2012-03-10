@@ -648,3 +648,14 @@ list-style-type:none;
 .contact_form textarea::-webkit-input-placeholder, input::-moz-placeholder {
   color: #fff;
 }
+#form_loader {
+  margin-top:160px;
+  margin-left: 234px;
+  display: none;
+}
+.thank_you {
+  display: none;
+  margin-top:160px;
+  font-size:14px;
+  margin-left:30px;
+}

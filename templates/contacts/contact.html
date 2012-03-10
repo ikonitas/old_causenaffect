@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<img id="form_loader" style="margin-top:160px;margin-left:234px;display:none" src="{{ MEDIA_URL}}img/ajax-loader.gif" />
+<img id="form_loader" src="{{ MEDIA_URL}}img/ajax-loader.gif" />
 <div class="thank_you"></div>
   <form action="/contact/" method="post" class="contact_form">{% csrf_token%}
 
@@ -52,7 +52,8 @@
           function(json) {
               if( json == "thanks"){
                 $('#form_loader').hide();
-                $('.thank_you').text("Thank tou for submitting form, we will contact to you back as soon as possible");
+                $('.thank_you').show();
+                $('.thank_you').text("Thank you for submitting your form, we will contact to you as soon as possible");
               }
               else{
                   alert("error");
