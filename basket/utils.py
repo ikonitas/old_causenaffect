@@ -3,6 +3,7 @@ from music.models import Music
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
+from django.conf import settings
 import decimal
 import random
 import os
@@ -87,11 +88,11 @@ def empty_basket(request):
 def get_songs_in_zip(order):
     sort_order = order.orderline_set.all().order_by("-pk")
     get_songs_pk = [str(pk.songs_pk.pk) for pk in sort_order]
-    full_path = os.getcwd()+"/media/music/zips/"+"_".join(get_songs_pk)+".zip"
+    full_path = settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip"
     if os.path.exists(full_path):
         return full_path
     else:
-        zip = zipfile.ZipFile(os.getcwd()+"/media/music/zips/"+"_".join(get_songs_pk)+".zip","w")
+        zip = zipfile.ZipFile(settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip","w")
         for music in sort_order:
             zip.write(music.songs_pk.full_track.path,music.songs_pk.full_name+".mp3",zipfile.ZIP_DEFLATED)
         zip.close()
