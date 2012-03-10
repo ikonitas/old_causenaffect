@@ -405,11 +405,6 @@ footer{
 .contact_form #id_captcha_1 {
   width:320px;
 }
-.contact_form input {
-  font-weight: bold;
-  width: 400px;
-  height: 8px;
-}
 .contact_form textarea {
   font-weight: bold;
 }
@@ -420,7 +415,9 @@ footer{
   border: solid 2px #323232;
   outline: 0;
   font: normal 13px/100% Verdana, Tahoma, sans-serif;
-  width: 200px;
+  width: 400px;
+  height: 8px;
+  font-weight:bold;
   background: transparent;
   /*background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));*/
   box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
