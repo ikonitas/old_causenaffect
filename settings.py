@@ -241,10 +241,18 @@ FACEBOOK_SECRET_KEY = "ae2cf8ac0b4056af62caa0d98d3a2785"
 FACEBOOK_SESSION_KEY = u'2.AQCao5OXnhlQd1VS.3600.1329955200.0-100000009533032'
 
 #PAYPAL
-PAYPAL_PDT_TOKEN = "bKss3aawW8Y3tsEp8kiRPoUF-08D8Gu659ZTfpTkNS3QDAd19LZOfmPbRRa"
-PAYPAL_EMAIL = 'ikonit_1330876747_biz@gmail.com'
-PAYPAL_RETURN_URL = 'http://127.0.0.1:8000/purchased/'
+if socket.gethostname() == "ed":
+    PAYPAL_PDT_TOKEN = "bKss3aawW8Y3tsEp8kiRPoUF-08D8Gu659ZTfpTkNS3QDAd19LZOfmPbRRa"
+    PAYPAL_EMAIL = 'ikonit_1330876747_biz@gmail.com'
+    PAYPAL_RETURN_URL = 'http://127.0.0.1:8000/purchased/'
+    
+    PAYPAL_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+    PAYPAL_PDT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
 
-PAYPAL_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
-PAYPAL_PDT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+PAYPAL_PDT_TOKEN = "2sdDDFMVDXTY7B9XCPQlbzO8iXurZaGUIPWnAqNNkGdqxXpWblYP2kmcbHy"
+PAYPAL_EMAIL = 'causenaffectuk@hotmail.com'
+PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/purchased/'
+    
+PAYPAL_URL = 'https://www.paypal.com/cgi-bin/webscr'
+PAYPAL_PDT_URL = 'https://www.paypal.com/cgi-bin/webscr'
 
