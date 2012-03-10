@@ -1,11 +1,11 @@
 {% block content %}
 <div class="clear"></div>
-<div class="categories">
+<!--<div class="categories">
     <ul class="categories_li">
-    {% for category in categories %}
-    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
-    {% endfor %}
-</div>
+     for category in categories 
+    <li><a href=" category.get_absolute_url "> category.title </a></li>
+     endfor 
+</div> -->
 {% for music in music_list %}
 <form method="POST" action="." class="cart">{% csrf_token %}
 <div id="music_samples">
@@ -75,7 +75,8 @@
              $('#topbar').slideUp(1000);
          });
      });
-</script>
+
+ </script>
 <script>
 $(document).ready(function(){
   $('.categories_li li a').mouseover(
@@ -93,7 +94,7 @@ $(document).ready(function(){
     $('.basket').live("click",(function(event){
         $('.empty_cart').hide();
         $('.cart_middle').empty();
-        $('.cart_middle').append("<div style='float:left;margin-left:30px;margin-top:11px;font-size:14px;color:#fff;' class='items_left'><span class='json_songs'></span> <span class='little_song' style='font-size:12px;font-style:italic' class='small_item'></span></div><div style='float:right;font-size:20px;margin-top:5px;margin-right:30px;color:#fff' class='items_right'><span class='json_price'><span></div>");
+        $('.cart_middle').append("<div id='songs_count' class='items_left'><span class='json_songs'></span> <span class='little_song' class='small_item'></span></div><div class='items_right'><span class='json_price'><span></div>");
         event.preventDefault();
 
         $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name,'quantity':1},
@@ -112,6 +113,5 @@ else {
     }));
 });  
 </script>
-
 
 {% endblock %}

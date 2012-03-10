@@ -2,12 +2,12 @@
 
 {% block content %}
 <div class="clear"></div>
-<div class="categories">
+<!--<div class="categories">
     <ul class="categories_li">
-    {% for category in categories %}
-    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
-    {% endfor %}
-</div>
+     for category in categories 
+    <li><a href=" category.get_absolute_url "> category.title </a></li>
+     endfor 
+</div> -->
 {% for music in music_list %}
 <form method="POST" action="." class="cart">{% csrf_token %}
 <div id="music_samples">
