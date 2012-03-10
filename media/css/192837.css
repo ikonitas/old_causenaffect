@@ -399,7 +399,7 @@ footer{
 }
 .contact_form {
   font-size: 13px;
-  margin-top: 18px;
+  margin-top: 17px;
   margin-left:60px;
 }
 .contact_form #id_captcha_1 {
@@ -408,7 +408,7 @@ footer{
 .contact_form input {
   font-weight: bold;
   width: 400px;
-  height: 12px;
+  height: 8px;
 }
 .contact_form textarea {
   font-weight: bold;
@@ -417,13 +417,12 @@ input, textarea {
   font-weight:bold;
   color: #fff;
   padding: 8px;
-  border: solid 1px #E5E5E5;
+  border: solid 2px #323232;
   outline: 0;
   font: normal 13px/100% Verdana, Tahoma, sans-serif;
   width: 200px;
   background: transparent;
   /*background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));*/
-  background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
   box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
@@ -581,7 +580,7 @@ input:focus, textarea:focus {
   font-size: 13px;
 }
 .captcha > img {
-  margin-bottom: 4px;
+  margin-bottom: 21px;
 }
 #music {
   margin-top: 10px;
