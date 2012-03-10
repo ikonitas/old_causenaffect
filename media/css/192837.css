@@ -628,6 +628,15 @@ input:focus, textarea:focus {
 .ie7 .event_info_wrapper{
   margin-top: -40px;
 }
+.categories {
+  background-image:url('../img/music/deze.png');
+  height:67px;
+  margin-top:-10px;
+}
+.categories_li {
+  padding-top:13px;
+  padding-left:36px;
+}
 .categories_li li{
   display:inline;
 list-style-type:none;
