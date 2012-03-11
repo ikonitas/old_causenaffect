@@ -593,10 +593,10 @@ footer{
   background-image:url('../img/player/player_box.png');
   background-repeat: no-repeat;
   width:523px;
-  height:62px;
-  padding-top:6px;
+  height:40px;
+  padding-top:5px;
   padding-left:6px;
-  font-size:14px
+  font-size:13px
 }
 #topbar {
   display:none;
@@ -854,5 +854,18 @@ tfoot .right {
 .contact_title {
   font-size: 18px;
   margin-top:36px;
-  margin-left: 60px;
+  margin-left: 64px;
+}
+.jp-play img {
+  margin-top: -2px;
+}
+.jp-pause img {
+  margin-top: -2px;
+}
+.basket img {
+  margin-left:-1px;
+  margin-top:-2px;
+}
+.attention {
+  font-size: 16px;
 }

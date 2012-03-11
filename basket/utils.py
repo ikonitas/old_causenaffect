@@ -87,7 +87,9 @@ def empty_basket(request):
 
 def get_songs_in_zip(order):
     sort_order = order.orderline_set.all().order_by("-pk")
-    get_songs_pk = [str(pk.songs_pk.pk) for pk in sort_order]
+    get_songs_pk = [pk.songs_pk.pk for pk in sort_order]
+    get_songs_pk.sort()
+    get_songs_pk = [str(pk) for pk in get_songs_pk]
     full_path = settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip"
     if os.path.exists(full_path):
         return full_path
