@@ -40,7 +40,7 @@
     $("#jquery_jplayer_{{ music.id}}").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {
-                mp3: "{{music.track_sample.url }}"
+                mp3: "{{music.track_sample.url }}",
             });
         },
         play: function() { // To avoid both jPlayers playing together.
@@ -102,6 +102,9 @@ $(document).ready(function(){
         $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name,'quantity':1},
         function(data){
     
+            if ( $.browser.msie ) {
+                location.reload();
+            }
     $('.json_songs').text(data.basket_count_songs);
         if (data.basket_count_songs == "1"){
             $('.little_song').text(' song');

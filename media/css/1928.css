@@ -749,6 +749,7 @@ tfoot .right {
 .view_bsk {
   padding-left: 76px;
   padding-right: 236px;
+  text-decoration: none;
 }
 #paypal {
   margin-top: 0;
@@ -834,4 +835,19 @@ tfoot .right {
 .view_bsk {
   padding-left: 76px;
   padding-right: 236px;
+}
+.ie8 #shopping_cart {
+  font-size: 13px;
+}
+.ie7 #shopping_cart {
+  font-size: 13px;
+}
+.ie7 .attention {
+  font-size: 13px;
+}
+.ie8 .attention {
+  font-size: 13px;
+}
+.ie7 .view_bsk {
+  text-decoration: none;
 }
