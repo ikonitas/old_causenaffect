@@ -19,6 +19,7 @@ def show_basket(request):
     
     basket_items = utils.get_basket_items(request)
     basket_subtotal = utils.basket_subtotal(request)
+    get_ziped_songs = utils.zip_songs(basket_items)
     
     return TemplateResponse(request, "basket/view_basket.html", {'basket_items':basket_items,'basket_subtotal':basket_subtotal,'paypal_url':settings.PAYPAL_URL,'paypal_email':settings.PAYPAL_EMAIL,'paypal_return_url':settings.PAYPAL_RETURN_URL})
 

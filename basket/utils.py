@@ -97,3 +97,18 @@ def get_songs_in_zip(order):
             zip.write(music.songs_pk.full_track.path,music.songs_pk.full_name+".mp3",zipfile.ZIP_DEFLATED)
         zip.close()
         return zip.filename
+
+def zip_songs(basket):
+    sort_order = [song.song.pk for song in basket]
+    sort_order.sort()
+    get_songs_pk = [str(pk) for pk in sort_order]
+    
+    full_path = settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip"
+    if os.path.exists(full_path):
+        return
+    else:
+        zip = zipfile.ZipFile(settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip","w")
+        for music in basket:
+            zip.write(music.song.full_track.path, music.song.full_name+".mp3",zipfile.ZIP_DEFLATED)
+        zip.close()
+        return

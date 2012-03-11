@@ -1,5 +1,6 @@
 {% block content %}
-<img id="form_loader" style="margin-top:160px;margin-left:234px;display:none" src="{{ MEDIA_URL}}img/ajax-loader.gif" />
+<img id="form_loader" src="{{ MEDIA_URL}}img/ajax-loader.gif" />
+<div class="contact_title">CONTACT</div>
 <div class="thank_you"></div>
   <form action="/contact/" method="post" class="contact_form">{% csrf_token%}
 
@@ -45,16 +46,18 @@
               $('#id_email').css('color','white');
           }
           else{
+              $('.contact_title').hide();
               $('.contact_form').hide();
               $('#form_loader').show();
           $.post("/contact/", {name:$('#id_name').val(),email:$('#id_email').val(),subject:$('#id_subject').val(),message:$('#id_message').val(),captcha_0:$('#id_captcha_0').val(),captcha_1:$('#id_captcha_1').val(),csrfmiddlewaretoken:'{{csrf_token}}'},
           function(json) {
               if( json == "thanks"){
                 $('#form_loader').hide();
-                $('.thank_you').text("Thank tou for submitting form, we will contact to you back as soon as possible");
+                $('.thank_you').show();
+                $('.thank_you').text("Thank you for submitting your form, we will contact to you as soon as possible");
               }
               else{
-                  alert("error");
+                  alert("Please try againa CAPTCHA entered wrong");
               }
           });
       }

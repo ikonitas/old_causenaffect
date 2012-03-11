@@ -8,7 +8,8 @@ PROJECT_ROOT = os.path.join(os.path.dirname(__file__).decode('utf-8'))
 
 if socket.gethostname() == "ed":
     DEBUG = True
-DEBUG = False
+else:
+    DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False }
@@ -251,10 +252,11 @@ if socket.gethostname() == "ed":
     PAYPAL_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
     PAYPAL_PDT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
 
-PAYPAL_PDT_TOKEN = "2sdDDFMVDXTY7B9XCPQlbzO8iXurZaGUIPWnAqNNkGdqxXpWblYP2kmcbHy"
-PAYPAL_EMAIL = 'causenaffectuk@hotmail.com'
-PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/purchased/'
-    
-PAYPAL_URL = 'https://www.paypal.com/cgi-bin/webscr'
-PAYPAL_PDT_URL = 'https://www.paypal.com/cgi-bin/webscr'
+else:
+    PAYPAL_PDT_TOKEN = "2sdDDFMVDXTY7B9XCPQlbzO8iXurZaGUIPWnAqNNkGdqxXpWblYP2kmcbHy"
+    PAYPAL_EMAIL = 'causenaffectuk@hotmail.com'
+    PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/purchased/'
+        
+    PAYPAL_URL = 'https://www.paypal.com/cgi-bin/webscr'
+    PAYPAL_PDT_URL = 'https://www.paypal.com/cgi-bin/webscr'
 

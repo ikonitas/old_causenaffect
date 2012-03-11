@@ -23,11 +23,8 @@
     <li><a href="javascript:;" class="jp-play" tabindex="1"><img src="{{ MEDIA_URL }}img/player/play.png"/></a></li>
     <li><a href="javascript:;" class="jp-pause" tabindex="1" style="display:none"><img src="{{ MEDIA_URL }}img/player/pause.png"/></a></li>
     <li><a class="basket" name="{{music.pk}}" href="#"><input type="hidden" name="song_id" value="{{music.pk}}" id="song_id" /><img src="{{ MEDIA_URL }}img/player/basket.png"></a></li>
-    <li><span style="margin-left:8px">£{{ music.price }}</span></li>
-    <li><span style="margin-left:30px">{{ music.artist }} - {{ music.title }}</span></li>
-    {% if music.image %}
-    <li><span style="float:right; margin-top:-5px;margin-right:29px;"><a rel="prettyPhoto" title="{{ music.get_image_name }}" href="{{music.get_full_image_path}}"><img src="{{ MEDIA_URL }}{{ music.image }}" alt="{{ music.get_image_name }}"/></a></span></li>
-    {% endif %}
+    <li><span style="margin-left:12px">£{{ music.price }}</span></li>
+    <li><span style="margin-left:24px">{{ music.artist }} - {{ music.title }}</span></li>
     </ul>
     <div class="jp-no-solution">
         <span>Update Required</span>
@@ -99,7 +96,7 @@ $(document).ready(function(){
         $('.cart_middle').append("<div id='songs_count' class='items_left'><span class='json_songs'></span> <span class='little_song' class='small_item'></span></div><div class='items_right'><span class='json_price'><span></div>");
         event.preventDefault();
 
-        $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name,'quantity':1},
+        $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name},
         function(data){
     
             if ( $.browser.msie ) {

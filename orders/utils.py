@@ -1,5 +1,6 @@
 from orders.models import Order
 from orders.models import OrderLine
+from django.utils.encoding import smart_unicode, smart_str
 
 def create_order(basket, tx, payer_email, payer_full_name):
     subtotal = 0
@@ -10,7 +11,7 @@ def create_order(basket, tx, payer_email, payer_full_name):
     order.tx = tx
     order.total = subtotal
     order.payer_email = payer_email
-    order.payer_full_name = payer_full_name
+    order.payer_full_name = smart_unicode(payer_full_name)
     order.save()
 
     for song in basket:
