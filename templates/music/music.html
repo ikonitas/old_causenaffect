@@ -92,9 +92,6 @@ $(document).ready(function(){
         $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name},
         function(data){
     
-            if ( $.browser.msie ) {
-                location.reload();
-            }
     $('.json_songs').text(data.basket_count_songs);
         if (data.basket_count_songs == "1"){
             $('.little_song').text(' song');
