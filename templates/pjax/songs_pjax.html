@@ -1,45 +1,41 @@
 {% block content %}
-
 <div class="clear"></div>
 <div class="categories">
     <ul class="categories_li">
-    {% for category in categories %}                                                                   
-    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
-    {% endfor %}
-</ul>
-</div>
-
-{% for song in songs %}
+        {% for category in categories %}
+        <li>&nbsp;<a class="category_click" href="{{category.get_absolute_url}}">{{ category.title }}</a></li>
+        {% endfor %}
+</div> 
+{% for music in music_list %}
+<form method="POST" action="." class="cart">{% csrf_token %}
 <div id="music_samples">
-    <div id="jquery_jplayer_{{ song.id }}" class="jp-jplayer"></div>
-    <div id="jp_container_{{ song.id }}" class="pl_ps">
+    <div id="jquery_jplayer_{{ music.id }}" class="jp-jplayer"></div>
+    <div id="jp_container_{{ music.id }}" class="pl_ps">
         <div class="jp-progress">
                 <div class="jp-seek-bar">
                         <div class="jp-play-bar"></div>
                 </div>
         </div>
+
     <ul class="jp-controls">
     <li><a href="javascript:;" class="jp-play" tabindex="1"><img src="{{ MEDIA_URL }}img/player/play.png"/></a></li>
     <li><a href="javascript:;" class="jp-pause" tabindex="1" style="display:none"><img src="{{ MEDIA_URL }}img/player/pause.png"/></a></li>
-    <li><a href="#"><img src="{{ MEDIA_URL }}img/player/basket.png"></a></li>
-    <li><span style="margin-left:8px">£{{ song.price }}</span></li>
-    <li><span style="margin-left:30px">{{ song.artist }} - {{ song.title }}</span></li>
-    {% if song.image %}
-    <li><span style="float:right; margin-top:-5px;margin-right:29px;"><a rel="prettyPhoto" title="{{ song.get_image_name }}" href="{{song.get_full_image_path}}"><img src="{{ MEDIA_URL }}{{ song.image }}" alt="{{ song.get_image_name }}"/></a></span></li>
-    {% endif %}
+    <li><a class="basket" name="{{music.pk}}" href="#"><input type="hidden" name="song_id" value="{{music.pk}}" id="song_id" /><img src="{{ MEDIA_URL }}img/player/basket.png"></a></li>
+    <li><span style="margin-left:12px">£{{ music.price }}</span></li>
+    <li><span style="margin-left:24px">{{ music.artist }} - {{ music.title }}</span></li>
     </ul>
     <div class="jp-no-solution">
         <span>Update Required</span>
         To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
     </div>
-    </div>  
+    </div>
 
 <script>
   $(document).ready(function(){
-    $("#jquery_jplayer_{{ song.id}}").jPlayer({
+    $("#jquery_jplayer_{{ music.id}}").jPlayer({
         ready: function () {
             $(this).jPlayer("setMedia", {
-                mp3: "{{song.track_sample.url }}"
+                mp3: "{{music.track_sample.url }}",
             });
         },
         play: function() { // To avoid both jPlayers playing together.
@@ -47,44 +43,68 @@
         },
         swfPath: "{{ MEDIA_URL }}/js/jPlayer/js/Jplayer.swf",
         supplied: "mp3",
-        cssSelectorAncestor: "#jp_container_{{ song.id }}",
+        cssSelectorAncestor: "#jp_container_{{ music.id }}",
         wmode: "window"
     });
 });
 //]]>
 </script>
 
+
 </div>
+</form>
 {% endfor %}
      <script>
        $(document).ready(function(){
      $(".jp-play").click(function(){
-      $('#topbar').slideDown(1000).delay(2000);
-      $('#topbar').slideUp(1000);
+     $('#topbar p').text('MUSIC IS PLAYING');
+      $('#topbar').slideDown(800).delay(200);
+      $('#topbar').slideUp(800);
  
      });
  });
  </script>
- <script>
-     $(document).ready(function(){
-         var a = $('li a').click(function(){
-             a.removeClass('letters');
-             $(this).addClass('letters');
-         });
-     });
- </script>
-
 <script>
 $(document).ready(function(){
-   $('.categories_li li a').mouseover(
- function(){
- $(this).animate({backgroundColor: "#0AD",
- }, 300, function() {                                                                                  
-   $('.categories_li li a').css("backgroundColor","transparent");
- 
- });
- });
- });
+  $('.categories_li li a').mouseover(
+function(){
+$(this).animate({backgroundColor: "#5fa9a4",
+}, 300, function() {
+  $('.categories_li li a').css("backgroundColor","transparent");
+
+});
+});
+});
+</script>
+<script>
+$(document).ready(function(){
+    $('.basket').live("click",(function(event){
+        $('#topbar p').text("SONG ADDED");
+        $('#topbar').slideDown(800).delay(200);
+        $('#topbar').slideUp(800);
+        $('.empty_cart').hide();
+        $('.cart_middle').empty();
+        $('.cart_middle').append("<div id='songs_count' class='items_left'><span class='json_songs'></span> <span class='little_song' class='small_item'></span></div><div class='items_right'><span class='json_price'><span></div>");
+        event.preventDefault();
+        $.ajaxSetup({async:false});
+        $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name},
+        function(data){
+    
+            if ( $.browser.msie ) {
+                location.reload();
+            }
+    $('.json_songs').text(data.basket_count_songs);
+        if (data.basket_count_songs == "1"){
+            $('.little_song').text(' song');
+}
+else {
+   $('.little_song').text(" songs");
+}
+   $('.json_price').text("£" + data.basket_subtotal);
+        }, "json");
+       
+    }));
+});  
 </script>
 
 {% endblock %}

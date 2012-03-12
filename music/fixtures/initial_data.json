@@ -1,0 +1,56 @@
+[
+    {
+        "pk": 3,
+        "model": "music.category",
+        "fields": {
+            "date_added": "2012-03-12",
+            "slug": "housebass",
+            "title": "HOUSE&BASS"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "music.category",
+        "fields": {
+            "date_added": "2012-03-12",
+            "slug": "electro-house",
+            "title": "ELECTRO HOUSE"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "music.category",
+        "fields": {
+            "date_added": "2012-03-12",
+            "slug": "tech",
+            "title": "TECH"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "music.category",
+        "fields": {
+            "date_added": "2012-03-12",
+            "slug": "ukg",
+            "title": "UKG"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "music.category",
+        "fields": {
+            "date_added": "2012-03-12",
+            "slug": "dubstep",
+            "title": "DUBSTEP"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "music.category",
+        "fields": {
+            "date_added": "2012-03-12",
+            "slug": "sample-packs",
+            "title": "SAMPLE PACKS"
+        }
+    }
+]

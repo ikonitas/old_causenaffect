@@ -1,7 +1,7 @@
 direction = "right";
 $(document).ready(function(){
 
-  $('.view_bsk, .left_middle li a, .next, .previous, .title a, .archive_year a, .archive_a, .archive_whole a, .title_archive a').live('click', function(e){
+  $('.view_bsk, .category_click, .left_middle li a, .next, .previous, .title a, .archive_year a, .archive_a, .archive_whole a, .title_archive a').live('click', function(e){
     e.preventDefault();
     $('.content').show('slide', { direction: direction});
     var name = $(this).attr("href").match(/\w+/);

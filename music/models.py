@@ -19,7 +19,7 @@ class Music(models.Model):
     artist = models.CharField(default="Cause N Affect", max_length=50)
     title = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=4, decimal_places=2)
-    category = models.ForeignKey(Category, null=True, blank=True)
+    category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     songs_order = models.IntegerField(null=True, blank=True, unique=True)
 
     class Meta:

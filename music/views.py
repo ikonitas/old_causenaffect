@@ -28,4 +28,4 @@ def music(request):
 def categories_songs(request, slug):
     category = get_object_or_404(Category, slug=slug)
     songs = Music.objects.all().filter(category=category)
-    return TemplateResponse(request, "categories/songs.html",{'songs':songs})
+    return TemplateResponse(request, "categories/songs.html",{'music_list':songs})

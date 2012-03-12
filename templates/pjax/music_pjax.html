@@ -1,11 +1,11 @@
 {% block content %}
 <div class="clear"></div>
-<!--<div class="categories">
+<div class="categories">
     <ul class="categories_li">
-     for category in categories 
-    <li><a href=" category.get_absolute_url "> category.title </a></li>
-     endfor 
-</div> -->
+        {% for category in categories %}
+        <li>&nbsp;<a class="category_click" href="{{category.get_absolute_url}}">{{ category.title }}</a></li>
+        {% endfor %}
+</div> 
 {% for music in music_list %}
 <form method="POST" action="." class="cart">{% csrf_token %}
 <div id="music_samples">
@@ -68,7 +68,7 @@
 $(document).ready(function(){
   $('.categories_li li a').mouseover(
 function(){
-$(this).animate({backgroundColor: "#0AD",
+$(this).animate({backgroundColor: "#5fa9a4",
 }, 300, function() {
   $('.categories_li li a').css("backgroundColor","transparent");
 
