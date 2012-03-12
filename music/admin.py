@@ -8,6 +8,7 @@ class MusicAdmin(admin.ModelAdmin):
 admin.site.register(Music, MusicAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
+    lists_display = ('title','order',)
     prepopulated_fields = {'slug':('title',),}
 
 admin.site.register(Category, CategoryAdmin)

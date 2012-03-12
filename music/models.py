@@ -5,7 +5,11 @@ import os
 class Category(models.Model):
     title = models.CharField(max_length=20)
     date_added = models.DateField(auto_now_add="True",editable=False)
+    order = models.IntegerField(null=True, blank=True, unique=True)
     slug = models.SlugField(max_length=20, editable=True, help_text="Please do not edit this field as this field is going to be prepopulated from title")
+
+    class Meta:
+        ordering = ('order',)
 
     def __unicode__(self):
         return self.title
