@@ -64,16 +64,6 @@
      });
  });
  </script>
- <script>
-     $(document).ready(function(){
-         $('.basket').click(function(){
-             $('#topbar p').text("SONG ADDED");
-             $('#topbar').slideDown(800).delay(200);
-             $('#topbar').slideUp(800);
-         });
-     });
-
- </script>
 <script>
 $(document).ready(function(){
   $('.categories_li li a').mouseover(
@@ -89,6 +79,9 @@ $(this).animate({backgroundColor: "#0AD",
 <script>
 $(document).ready(function(){
     $('.basket').live("click",(function(event){
+        $('#topbar p').text("SONG ADDED");
+        $('#topbar').slideDown(800).delay(200);
+        $('#topbar').slideUp(800);
         $('.empty_cart').hide();
         $('.cart_middle').empty();
         $('.cart_middle').append("<div id='songs_count' class='items_left'><span class='json_songs'></span> <span class='little_song' class='small_item'></span></div><div class='items_right'><span class='json_price'><span></div>");
