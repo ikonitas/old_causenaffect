@@ -3,8 +3,8 @@ from music.models import Music
 from music.models import Category
 
 class MusicAdmin(admin.ModelAdmin):
-    list_display = ('artist','title','price',)
-
+    list_display = ('full_name','songs_order','price',)
+    list_editable = ('songs_order',)
 admin.site.register(Music, MusicAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
