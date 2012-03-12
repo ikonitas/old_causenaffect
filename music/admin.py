@@ -9,6 +9,7 @@ admin.site.register(Music, MusicAdmin)
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title','order',)
+    list_editable = ('order',)
     prepopulated_fields = {'slug':('title',),}
 
 admin.site.register(Category, CategoryAdmin)
