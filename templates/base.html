@@ -243,6 +243,17 @@ $(document).ready(function() {
   });
 });
 </script>
+<script>
+        $(document).ready(function(){
+      $(".basket").click(function(){
+      $('#topbar p').text('SONG ADDED');
+       $('#topbar').slideDown(800).delay(200);
+       $('#topbar').slideUp(800);
+  
+      });
+  });
+</script>
+
     <!--[if lt IE 7 ]>
         <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
         <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>

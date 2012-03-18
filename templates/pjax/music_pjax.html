@@ -42,6 +42,7 @@
             $(this).jPlayer("pauseOthers");
         },
         swfPath: "{{ MEDIA_URL }}/js/jPlayer/js/Jplayer.swf",
+        preload: "none",
         supplied: "mp3",
         cssSelectorAncestor: "#jp_container_{{ music.id }}",
         wmode: "window"
@@ -78,7 +79,7 @@ $(this).animate({backgroundColor: "#5fa9a4",
 </script>
 <script>
 $(document).ready(function(){
-    $('.basket').live("click",(function(event){
+    $('.basket').click(function(event){
         $('#topbar p').text("SONG ADDED");
         $('#topbar').slideDown(800).delay(200);
         $('#topbar').slideUp(800);
@@ -86,7 +87,7 @@ $(document).ready(function(){
         $('.cart_middle').empty();
         $('.cart_middle').append("<div id='songs_count' class='items_left'><span class='json_songs'></span> <span class='little_song' class='small_item'></span></div><div class='items_right'><span class='json_price'><span></div>");
         event.preventDefault();
-        $.ajaxSetup({async:false});
+        //$.ajaxSetup({async:false});
         $.post("/music/",{csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,"song_id":this.name},
         function(data){
     
@@ -103,7 +104,7 @@ else {
    $('.json_price').text("£" + data.basket_subtotal);
         }, "json");
        
-    }));
+    });
 });  
 </script>
 

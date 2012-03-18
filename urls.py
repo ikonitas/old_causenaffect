@@ -3,7 +3,6 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 from django.conf import settings
 from core.ajax_views import archive
-from basket.views import purchased
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -16,11 +15,15 @@ urlpatterns = patterns('',
     url(r'^biography/', include('biography.urls')),
     url(r'^admin/', include('admin_urls')),
     url(r'^archive/$', archive),
+    url(r'^order/', include('orders.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/filebrowser/', include('filebrowser.urls')),
     url(r'^captcha/', include('captcha.urls')),
-    url(r'^purchased/$', purchased),
 )
+
+urlpatterns += patterns('paypal.standard.ipn.views',
+        url(r'^notifying/$', 'ipn', name="paypal-ipn"),
+        )
 
 if settings.HOSTNAME == "ed":
     urlpatterns += patterns('',

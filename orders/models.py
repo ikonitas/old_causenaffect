@@ -3,9 +3,11 @@ from music.models import Music
 
 class Order(models.Model):
     purchased_at = models.DateTimeField(auto_now_add=True)
-    tx = models.CharField(max_length=250)
+    transaction_id = models.CharField(max_length=250,null=True, blank=True)
     payer_email = models.EmailField(null=True, blank=True)
     payer_full_name = models.CharField(max_length=100, null=True,blank=True)
+    payment_status = models.CharField(max_length=20, null=True, blank=True,default="Uncompleted")
+    basket_id= models.CharField(max_length=200, null=True, blank=True)
     total = models.DecimalField(max_digits=19, decimal_places=2)
 
     def __unicode__(self):

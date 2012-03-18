@@ -24,20 +24,7 @@
 			</tr>
 			<tr>
 				<th colspan="10" style="text-align:right">
-                     <form name="paypal" id="paypal" action="{{ paypal_url }}" method="post">                                 
-                         <input type="hidden" name="return" value="{{ paypal_return_url }}">
-                     <input type="hidden" name="cancel_return" value="http://127.0.0.1:8000/">
-                     <input type="hidden" name="business" value="{{ paypal_email }}">
-                     <input type="hidden" name="cmd" value="_cart">
-                     <input type="hidden" name="currency_code" value="GBP">
-                     <input type="hidden" name="lc" value="GB">
-                     <input type="hidden" name="upload" value="1" >
-                     {% for song in basket_items %}
-                     <input type="hidden" name="item_name_{{ forloop.counter }}" value="{{ song.name}}">
-                     <input type="hidden" name="amount_{{ forloop.counter }}" value="{{ song.price }}">
-                     {% endfor %}
-                     <input type="image" src="{{ MEDIA_URL }}img/cart/paypal.png" name="submit" alt="Make payments with PayPal - it's fast, free and secure!   ">
-                      </form>
+                    {{ form }}
               <br> 
 				</th>
 			</tr>

@@ -871,3 +871,28 @@ tfoot .right {
 .attention {
   font-size: 16px;
 }
+.payment_status {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 18px;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+.download_box {
+  height: 52px;
+  width: 535px;
+  background-image: url('../img/dlbox.png');
+}
+.download_box_song_name {
+  float:left;
+  margin-top: 17px;
+  margin-left:10px;
+}
+.download_box_download {
+  float: right;
+  margin-top:26px;
+  margin-right:10px;
+}
+.download_box_download a {
+  padding-right:80px;
+  padding-top:16px;
+}

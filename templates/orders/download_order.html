@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="clear"></div>
+{% if order %}
+{% if request.session.cart_id == order.basket_id %}
+<div class="payment_status">YOUR ORDER HASS BEEN {{ order.payment_status|upper }}</div>
+{% endif %}
+{%  for song in songs %}
+<div class="download_box">
+    <div class="download_box_song_name">{{ song.songs_name }}</div> 
+    <div class="download_box_download"><a href="/order/{{ order.pk}}/{{ song.songs_pk.pk }}/">&nbsp;</a></div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if status %}
+<div class="payment_status">{{ status }}</div>
+{% endif %}
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+    $(document).ready(function(){update();});
+
+function update(){
+    $.post("/order/"+{{order.pk}}+"/",{"order_pk":{{order.pk}}},
+    function(data) {
+        if (data.status == "completed"){
+            console.log("testing "+ data.status);
+        }
+        else {
+            console.log("testing "+ data.status);
+            setTimeout(function(){location.reload() }, 6000);
+        }
+    }, "json");
+}
+
+
+</script>
+
+{% endblock %}

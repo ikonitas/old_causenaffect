@@ -1,6 +1,7 @@
 # Django settings for kane project.
 import socket
 import os
+import sys
 
 HOSTNAME = socket.gethostname()
 
@@ -67,7 +68,10 @@ MEDIA_ROOT = PROJECT_ROOT + '/media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/'
+if socket.gethostname() == "ed": 
+    MEDIA_URL = '/media/'
+else:
+    MEDIA_URL = "http://media.causenaffect.co.uk/" 
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -110,12 +114,11 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.csrf.CsrfResponseMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -173,6 +176,7 @@ INSTALLED_APPS = (
     'music',
     'debug_toolbar',
     'orders',
+    'paypal2.standard.ipn',
     #'djpjax',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
@@ -245,18 +249,13 @@ FACEBOOK_SESSION_KEY = u'2.AQCao5OXnhlQd1VS.3600.1329955200.0-100000009533032'
 
 #PAYPAL
 if socket.gethostname() == "ed":
-    PAYPAL_PDT_TOKEN = "bKss3aawW8Y3tsEp8kiRPoUF-08D8Gu659ZTfpTkNS3QDAd19LZOfmPbRRa"
-    PAYPAL_EMAIL = 'ikonit_1330876747_biz@gmail.com'
-    PAYPAL_RETURN_URL = 'http://127.0.0.1:8000/purchased/'
+    PAYPAL_RECEIVER_EMAIL = 'ikonit_1330876747_biz@gmail.com'
+    PAYPAL_RETURN_URL = 'http://127.0.0.1:8000/order/'
+    PAYPAL_NOTIFY_URL = 'http://127.0.0.1:8000/notifying/'
+    PAYPAL_CANCEL_RETURN = 'http://127.0.0.1:8000/order/'
     
-    PAYPAL_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
-    PAYPAL_PDT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr'
-
 else:
-    PAYPAL_PDT_TOKEN = "2sdDDFMVDXTY7B9XCPQlbzO8iXurZaGUIPWnAqNNkGdqxXpWblYP2kmcbHy"
-    PAYPAL_EMAIL = 'causenaffectuk@hotmail.com'
-    PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/purchased/'
-        
-    PAYPAL_URL = 'https://www.paypal.com/cgi-bin/webscr'
-    PAYPAL_PDT_URL = 'https://www.paypal.com/cgi-bin/webscr'
-
+    PAYPAL_RECEIVER_EMAIL = 'causenaffectuk@hotmail.com'
+    PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/order/'
+    PAYPAL_NOTIFY_URL = 'http://www.causenaffect.co.uk/notifying/',
+    PAYPAL_CANCEL_RETURN = 'http://www.causenaffect.co.uk/order/',

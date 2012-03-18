@@ -6,7 +6,11 @@ from music.models import Category
 from django.http import HttpResponse
 from basket import utils
 import simplejson
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 @pjax("pjax/music_pjax.html")
 def music(request):
     music_list = Music.objects.all()

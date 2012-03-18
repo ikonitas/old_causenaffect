@@ -1,13 +1,8 @@
 from basket.models import Basket
 from music.models import Music
 from django.shortcuts import get_object_or_404
-from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
-from django.conf import settings
 import decimal
 import random
-import os
-import zipfile
 
 CART_ID_SESSION_KEY = 'cart_id'
 
@@ -83,34 +78,3 @@ def is_empty(request):
 def empty_basket(request):
     user_basket = get_basket_items(request)
     user_basket.delete()
-
-
-def get_songs_in_zip(order):
-    sort_order = order.orderline_set.all().order_by("-pk")
-    get_songs_pk = [pk.songs_pk.pk for pk in sort_order]
-    get_songs_pk.sort()
-    get_songs_pk = [str(pk) for pk in get_songs_pk]
-    full_path = settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip"
-    if os.path.exists(full_path):
-        return full_path
-    else:
-        zip = zipfile.ZipFile(settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip","w")
-        for music in sort_order:
-            zip.write(music.songs_pk.full_track.path,music.songs_pk.full_name+".mp3",zipfile.ZIP_DEFLATED)
-        zip.close()
-        return zip.filename
-
-def zip_songs(basket):
-    sort_order = [song.song.pk for song in basket]
-    sort_order.sort()
-    get_songs_pk = [str(pk) for pk in sort_order]
-    
-    full_path = settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip"
-    if os.path.exists(full_path):
-        return
-    else:
-        zip = zipfile.ZipFile(settings.PROJECT_ROOT+"/media/music/zips/"+"_".join(get_songs_pk)+".zip","w")
-        for music in basket:
-            zip.write(music.song.full_track.path, music.song.full_name+".mp3",zipfile.ZIP_DEFLATED)
-        zip.close()
-        return

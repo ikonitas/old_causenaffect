@@ -14,7 +14,16 @@
     <fieldset class="hide_print module aligned ">
         <h2>Order Information</h2>
         <div class="form-row">
-           <label>Order created:</label>{{ order.purchased_at}}
+            <label>Order status:</label>
+            {{ order.payment_status }}
+        </div>
+        <div class="form-row">
+            <label>Order created:</label>
+            {{ order.purchased_at}}
+        </div>
+        <div class="form-row">
+            <label>Order Transaction Id:</label>
+            {{order.transaction_id }}
         </div>
        <h2>Customer Information</h2>
        <div class="form-row">
