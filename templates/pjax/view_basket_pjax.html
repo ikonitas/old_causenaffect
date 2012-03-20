@@ -1,7 +1,4 @@
 {% block content %}
-<div id="dialog" title="Form submission">
-    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 0 0;"></span>Please ensure that your payment has been processed and wait for a few moments for your music to download within PAYPAL. Do not click on the redirected within 10seconds link as we will not be held responsible for music which has not downloaded.</p>
-</div>
 <table summary="Your Shopping Cart" id="shopping_cart">
 		<caption>YOUR SHOPPING CART</caption>
 		<thead>
@@ -47,34 +44,11 @@
 		{% endfor %}
 		{% endif %}
 	</table>
-    <div class="attention"><span style="font-weight:bold">Attention:</span> while awaiting your payment to process please wait a few moments for your account to be verified. Please avoid the click "If you are not redirected within 10 seconds"</div>
+    <div class="attention"><span style="font-weight:bold">Attention:</span> After payment please click on link "Return to causenaffectuk@hotmail.com"</div>
     <br/>
     <br/>
     <br/>
     <br/>
 {% endblock %}
 {% block javascript %}
-<script>
-$("#dialog").dialog({
-    resizable: false,
-    autoOpen: false,
-    modal: true,
-    buttons: {
-        "Yes": function() {
-            $('#paypal').unbind("submit.mine").submit();
-            $(this).dialog("close");
-        },
-        "No": function() {
-            $(this).dialog("close");
-        }
-    }
-});
-
-$('#paypal').bind("submit.mine", function(event) {
-    event.preventDefault();
-    targetform = this;
-    $('#dialog').dialog('open');
-});
-</script>
-
 {% endblock %}
