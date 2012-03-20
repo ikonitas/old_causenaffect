@@ -28,7 +28,7 @@ def show_basket(request):
 
         form = PayPalPaymentsForm(basket_items,initial=paypal_dict)
         
-        if settings.SERVER_STATUS == "Live":
+        if settings.SERVER_STATUS == "LIVE":
             form_type = form.render()
         else:
             form_type = form.sandbox()
