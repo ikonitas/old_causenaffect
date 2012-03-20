@@ -6,6 +6,7 @@ from djpjax import pjax
 from django.template.response import TemplateResponse
 from django.conf import settings
 
+
 @pjax("pjax/view_basket_pjax.html")
 def show_basket(request):
     if request.method == "POST":
@@ -26,8 +27,13 @@ def show_basket(request):
      }
 
         form = PayPalPaymentsForm(basket_items,initial=paypal_dict)
+        
+        if settings.SERVER_STATUS == "Live":
+            form_type = form.render()
+        else:
+            form_type = form.sandbox()
 
-        return TemplateResponse(request, "basket/view_basket.html", {'basket_items':basket_items,'basket_subtotal':basket_subtotal,'form':form.sandbox()})
+        return TemplateResponse(request, "basket/view_basket.html", {'basket_items':basket_items,'basket_subtotal':basket_subtotal,'form':form_type})
     
     else:
         return TemplateResponse(request, "basket/view_basket.html", {'basket_items':basket_items,'basket_subtotal':basket_subtotal})

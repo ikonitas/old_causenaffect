@@ -10,8 +10,11 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + 'paypal/')
 
 if socket.gethostname() == "ed":
     DEBUG = True
+    SERVER_STATUS = "LOCAL"
 else:
     DEBUG = False
+    SERVER_STATUS = "LIVE"
+
 TEMPLATE_DEBUG = DEBUG
 
 DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS': False }
