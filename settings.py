@@ -6,6 +6,7 @@ import sys
 HOSTNAME = socket.gethostname()
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__).decode('utf-8'))
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + 'paypal/')
 
 if socket.gethostname() == "ed":
     DEBUG = True
@@ -161,6 +162,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'paypal.standard.ipn',
     'blog',
     'events',
     'south',
@@ -176,7 +178,6 @@ INSTALLED_APPS = (
     'music',
     'debug_toolbar',
     'orders',
-    'paypal2.standard.ipn',
     #'djpjax',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
@@ -250,9 +251,9 @@ FACEBOOK_SESSION_KEY = u'2.AQCao5OXnhlQd1VS.3600.1329955200.0-100000009533032'
 #PAYPAL
 if socket.gethostname() == "ed":
     PAYPAL_RECEIVER_EMAIL = 'ikonit_1330876747_biz@gmail.com'
-    PAYPAL_RETURN_URL = 'http://127.0.0.1:8000/order/'
-    PAYPAL_NOTIFY_URL = 'http://127.0.0.1:8000/notifying/'
-    PAYPAL_CANCEL_RETURN = 'http://127.0.0.1:8000/order/'
+    PAYPAL_RETURN_URL = 'http://90.209.158.188/order/'
+    PAYPAL_NOTIFY_URL = 'http://90.209.158.188/notifying/'
+    PAYPAL_CANCEL_RETURN = 'http://90.209.158.188/order/'
     
 else:
     PAYPAL_RECEIVER_EMAIL = 'causenaffectuk@hotmail.com'

@@ -3,13 +3,13 @@ import sys
 import socket
 
 if socket.gethostname() == "ed":
-    activate_this = os.path.join("/home/ed/Documents/html/Django/kanedj/")
+    activate_this = os.path.join("/www/sites/causenaffect/")
 
-    root = os.path.join(os.path.dirname(__file__),"/home/ed/Documents/html/Django/kanedj")
+    root = os.path.join(os.path.dirname(__file__),"/www/sites/causenaffect")
     sys.path.insert(0, root)
-    sys.path.append("/home/ed/Documents/html/Django/kanedj/kane/")
+    sys.path.append("/www/sites/causenaffect/causenaffect/")
     sys.path.append("/home/ed/Documents/html/Django/kanedj/lib/python2.7/site-packages/")
-    os.environ["DJANGO_SETTINGS_MODULE"] = "kane.settings"
+    os.environ["DJANGO_SETTINGS_MODULE"] = "causenaffect.settings"
 
     import django.core.handlers.wsgi
     application = django.core.handlers.wsgi.WSGIHandler()

@@ -1,4 +1,4 @@
-from paypal2.standard.forms import PayPalPaymentsForm
+from causenaffect.paypal.standard.forms import PayPalPaymentsForm
 from basket import utils
 from orders import utils as orders_utils
 from django.conf import settings
