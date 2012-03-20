@@ -261,5 +261,5 @@ if socket.gethostname() == "ed":
 else:
     PAYPAL_RECEIVER_EMAIL = 'causenaffectuk@hotmail.com'
     PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/order/'
-    PAYPAL_NOTIFY_URL = 'http://www.causenaffect.co.uk/notifying/',
-    PAYPAL_CANCEL_RETURN = 'http://www.causenaffect.co.uk/order/',
+    PAYPAL_NOTIFY_URL = 'http://www.causenaffect.co.uk/notifying/'
+    PAYPAL_CANCEL_RETURN = 'http://www.causenaffect.co.uk/order/'
