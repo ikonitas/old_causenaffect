@@ -43,7 +43,7 @@ def download_order(request, order_pk):
         invoice = PayPalIPN.objects.get(invoice=order.pk)
     except:
         order = Order.objects.get(pk=order_pk)
-        return render_to_response('orders/download_order.html', {"status":"We are waiting for confirmation of payment for this order.Please wait or try refresh browser...","order":order},context_instance=RequestContext(request))
+        return render_to_response('orders/download_order.html', {"status":"We are waiting for confirmation of payment for this order.Please wait or try refresh browser with F5...","order":order},context_instance=RequestContext(request))
     if basket_nr == order.basket_id:
         empty_basket = utils.empty_basket(request)
         order.transaction_id = invoice.txn_id
@@ -56,7 +56,7 @@ def download_order(request, order_pk):
         return render_to_response('orders/download_order.html', {'order':order,'songs':songs}, context_instance=RequestContext(request))
     else:
 
-        return render_to_response('orders/download_order.html', {"status":"We are waiting for confirmation of payment for this order.Please wait or try to refresh browser...","order":order}, context_instance=RequestContext(request))
+        return render_to_response('orders/download_order.html', {"status":"We are waiting for confirmation of payment for this order.Please wait or try to refresh browser F5...","order":order}, context_instance=RequestContext(request))
 
 def download(request, order_pk, song_pk):
     basket_nr = request.session['cart_id']

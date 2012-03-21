@@ -1,15 +1,11 @@
 from contacts.forms import ContactForm
-from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
-from django.core.mail import send_mail
-from django.template.context import RequestContext
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 from django.template import Context
-from captcha.fields import CaptchaField
 from django.http import HttpResponse
 from djpjax import pjax
 from django.template.response import TemplateResponse
+from django.conf import settings
 
 @pjax("pjax/contact_pjax.html")
 def contact(request):
@@ -22,7 +18,7 @@ def contact(request):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
 
-            recipients = ['ikonitas@gmail.com']
+            recipients = [settings.EMAIL_HOST_USER]
 
             plaintext = get_template('contacts/email.txt')
             d = Context({'name':name,

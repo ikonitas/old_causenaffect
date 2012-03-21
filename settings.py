@@ -233,8 +233,8 @@ TINYMCE_JS_ROOT = MEDIA_ROOT + 'js/tiny_mce'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'ikonitas@gmail.com'
-EMAIL_HOST_PASSWORD = 'sidabras0915'
+EMAIL_HOST_USER = 'causenaffectuk@gmail.com'
+EMAIL_HOST_PASSWORD = 'kanergzbadman1'
 
 
 CAPTCHA_FONT_PATH = PROJECT_ROOT + "/media/fonts/Vera.ttf"
