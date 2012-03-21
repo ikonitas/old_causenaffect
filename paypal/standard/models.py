@@ -72,7 +72,7 @@ class PayPalStandardBase(models.Model):
     payment_gross = models.DecimalField(max_digits=64, decimal_places=2, default=0, blank=True, null=True)
     payment_status = models.CharField(max_length=9, blank=True)
     payment_type = models.CharField(max_length=7, blank=True)
-    pending_reason = models.CharField(max_length=14, blank=True)
+    pending_reason = models.CharField(max_length=20, blank=True)
     protection_eligibility=models.CharField(max_length=32, blank=True)
     quantity = models.IntegerField(blank=True, default=1, null=True)
     reason_code = models.CharField(max_length=15, blank=True)
@@ -127,7 +127,7 @@ class PayPalStandardBase(models.Model):
     
     # Dispute Resolution Variables
     case_creation_date = models.DateTimeField(blank=True, null=True, help_text="HH:MM:SS DD Mmm YY, YYYY PST")
-    case_id = models.CharField(max_length=14, blank=True)
+    case_id = models.CharField(max_length=20, blank=True)
     case_type = models.CharField(max_length=24, blank=True)
     
     # Variables not categorized
