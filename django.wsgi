@@ -8,7 +8,7 @@ if socket.gethostname() == "ed":
     root = os.path.join(os.path.dirname(__file__),"/www/sites/causenaffect")
     sys.path.insert(0, root)
     sys.path.append("/www/sites/causenaffect/causenaffect/")
-    sys.path.append("/home/ed/Documents/html/Django/kanedj/lib/python2.7/site-packages/")
+    sys.path.append("/www/sites/causenaffect/lib/python2.7/site-packages/")
     os.environ["DJANGO_SETTINGS_MODULE"] = "causenaffect.settings"
 
     import django.core.handlers.wsgi

@@ -5,9 +5,11 @@ from django.conf import settings
 from djpjax import pjax
 from django.template.response import TemplateResponse
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
 @pjax("pjax/view_basket_pjax.html")
+@login_required(login_url="/accounts/login")
 def show_basket(request):
     if request.method == "POST":
        postdata = request.POST.copy()
@@ -20,10 +22,10 @@ def show_basket(request):
     if order:
         paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
-        "return_url": settings.PAYPAL_RETURN_URL + "{0}/".format(order.pk),
+        "return_url": settings.PAYPAL_RETURN_URL,
         "invoice": "{0}".format(order.pk),               
         "notify_url": settings.PAYPAL_NOTIFY_URL,
-        "cancel_return": settings.PAYPAL_CANCEL_RETURN + "{0}/".format(order.pk),
+        "cancel_return": settings.PAYPAL_CANCEL_RETURN,
      }
 
         form = PayPalPaymentsForm(basket_items,initial=paypal_dict)

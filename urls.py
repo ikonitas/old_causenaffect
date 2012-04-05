@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^admin/filebrowser/', include('filebrowser.urls')),
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^accounts/', include('accounts.urls')),
 )
 
 urlpatterns += patterns('paypal.standard.ipn.views',

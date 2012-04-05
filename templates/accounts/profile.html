@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="payment_status">Your orders {{orders.length }}</div>
+{% for orderline in orderlines %}
+
+{% for song in orderline %}
+<div class="download_box">
+    <div class="download_box_song_name">{{ song.songs_name }}</div>
+    <div class="download_box_download"><a href="/order/{{song}}/{{ song.songs_pk.pk }}/">&nbsp;</a></div>
+</div>
+{% endfor %}
+{% endfor %}
+<h5>If your songs doesnt appear yet, please wait 1-5minutes and please refresh while we verifying your payment thanks.</h5>
+{% endblock %}

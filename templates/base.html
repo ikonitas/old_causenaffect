@@ -16,8 +16,7 @@
     
     {# TODO: <link rel="shortcut icon" href="{{ MEDIA_URL }}images/favicon.ico" /> #}
     {# TODO: <link rel="apple-touch-icon" href="{{ MEDIA_URL }}images/apple-touch-icon.png" /> #}
-    {% block css %}
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/6237d6c9.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/00236254.css" />
     <!-- PrettyPhoto css -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/prettyPhoto.css" />
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css" />
@@ -27,7 +26,7 @@
     <link href="{{ MEDIA_URL }}js/jPlayer/skin/pink.flag/jplayer.pink.flag.css" rel="stylesheet" type="text/css" />
     <!-- END OF SCROLLER -->
 
-
+    {% block css %}
     {% endblock %}
     
     <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
@@ -83,6 +82,7 @@
         <li><a href="/contact/">CONTACTS</a></li>
         <li><a href="/biography/">BIOGRAPHY</a></li>
       </ul>
+      <div class="logins"> {% if request.user.is_authenticated %}<a href="{% url auth_logout %}?next=/events/">LOGOUT</a><a href="/accounts/profile">PROFILE</a> {% else %} <a href="/accounts/login/">LOGIN</a><a href="/accounts/register">REGISTER</a> {% endif %}</div>
     </div>
     <div class="left_bottom">
       <div class="logos">

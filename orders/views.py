@@ -8,6 +8,9 @@ from django.http import Http404
 from music.models import Music
 from django.views.decorators.csrf import csrf_exempt
 import simplejson
+from orders.models import OrderLine
+from django.contrib.auth.decorators import login_required
+
 
 def view_order(request, order_pk):
     order = Order.objects.get(pk=order_pk)
@@ -58,21 +61,16 @@ def download_order(request, order_pk):
 
         return render_to_response('orders/download_order.html', {"status":"We are waiting for confirmation of payment for this order.Please wait or try to refresh browser F5...","order":order}, context_instance=RequestContext(request))
 
-def download(request, order_pk, song_pk):
-    basket_nr = request.session['cart_id']
-    order = Order.objects.get(pk=order_pk)
+@login_required(login_url="/accounts/login")
+def download(request, orderline_pk, song_pk):
+    orderline = OrderLine.objects.get(pk=orderline_pk)
     song = Music.objects.get(pk=song_pk)
-    if basket_nr == order.basket_id:
-        if order.payment_status == "Completed":
-            empty_basket = utils.empty_basket(request)
-            with open(song.full_track.path, 'rb') as f:
-                response = HttpResponse(f.read())
-            response['Content-Type'] = "audio/mpeg3"
-            response["Content-Disposition"] = "attachment; filename = %s.mp3" % str(song.full_name)
-            return response
-        else:
-            raise Http404
+    if orderline.order.user == request.user:
+        song = Music.objects.get(pk=orderline.songs_pk_id)
+        with open(song.full_track.path, 'rb') as f:
+            response = HttpResponse(f.read())
+        response['Content-Type'] = "audio/mpeg3"
+        response["Content-Disposition"] = "attachment; filename = %s.mp3" % str(song.full_name)
+        return response
     else:
         raise Http404
-
-

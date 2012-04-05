@@ -6,7 +6,6 @@ import os
 from django.forms import ValidationError
 from django.conf import settings
 import twitter
-import facebook
 
 class Entry(models.Model):
     LIVE_STATUS = 1

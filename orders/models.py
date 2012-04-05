@@ -1,7 +1,9 @@
 from django.db import models
 from music.models import Music
+from django.contrib.auth.models import User
 
 class Order(models.Model):
+    user = models.ForeignKey(User,null=True, blank=True)
     purchased_at = models.DateTimeField(auto_now_add=True)
     transaction_id = models.CharField(max_length=250,null=True, blank=True)
     payer_email = models.EmailField(null=True, blank=True)

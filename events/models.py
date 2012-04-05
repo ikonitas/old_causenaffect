@@ -6,7 +6,6 @@ import datetime
 from django.core.validators import MaxLengthValidator
 import twitter
 from django.conf import settings
-import facebook
 
 class Event(models.Model):
     LIVE_STATUS = 1

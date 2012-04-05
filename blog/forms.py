@@ -1,6 +1,5 @@
 from django import forms
 from blog.models import Entry
-from django.forms import ValidationError
 
 class EntryAdminForm(forms.ModelForm):
     class Meta:

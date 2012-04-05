@@ -9,6 +9,7 @@ def create_order(request,basket):
         return
 
     order = Order()
+    order.user = request.user
     order.total = subtotal
     order.basket_id = request.session['cart_id']
     order.save()

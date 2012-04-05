@@ -896,3 +896,61 @@ tfoot .right {
   padding-right:80px;
   padding-top:16px;
 }
+#signup {
+  margin-top: 34px;
+}
+#signup legend {
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+
+#signup input:focus, #signup textarea:focus, #signup span.editable:focus {
+  outline: none;
+  background-color: #fff;
+  border: 1px solid #000 !important;
+}
+#signup input[type="text"], #signup input[type="password"], #signup input[type="file"], #signup textarea, #signup span.editable {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  margin-bottom: 20px;
+  width: 260px;
+  border: 1px solid #D7D7D7;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 5px 6px;
+  color: #000;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  float: right;
+}
+#signup p {
+  margin-bottom: 10px;
+}
+#signup label {
+  font-size: 16px;
+}
+
+.well {
+  margin-top:34px;
+  margin-left:36px;
+}
+.well legend {
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+.well label {
+  color : #6CC;
+  font-weight: bold;
+}
+.well input[type="submit"] {
+  margin-left:6px;
+}
+.well .errorlist {
+  color: red;
+}
+.logins a {
+  padding-right: 138px;
+}
+.errorlist {
+  color: red;
+  font-weight: bold;
+}

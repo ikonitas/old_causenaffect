@@ -1,4 +1,4 @@
-# Django settings for kane project.
+## Django settings for kane project.
 import socket
 import os
 import sys
@@ -6,7 +6,7 @@ import sys
 HOSTNAME = socket.gethostname()
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__).decode('utf-8'))
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + 'paypal/')
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + '/paypal/')
 
 if socket.gethostname() == "ed":
     DEBUG = True
@@ -181,6 +181,7 @@ INSTALLED_APPS = (
     'music',
     'debug_toolbar',
     'orders',
+    'accounts',
     #'djpjax',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
@@ -227,6 +228,8 @@ PAGINATION_SETTINGS = {
         'MARGIN_PAGES_DISPLAYED': 2,
         }
 
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+
 TINYMCE_JS_URL = MEDIA_URL + 'js/tiny_mce/tiny_mce.js'
 TINYMCE_JS_ROOT = MEDIA_ROOT + 'js/tiny_mce'
 
@@ -254,12 +257,14 @@ FACEBOOK_SESSION_KEY = u'2.AQCao5OXnhlQd1VS.3600.1329955200.0-100000009533032'
 #PAYPAL
 if socket.gethostname() == "ed":
     PAYPAL_RECEIVER_EMAIL = 'ikonit_1330876747_biz@gmail.com'
-    PAYPAL_RETURN_URL = 'http://90.209.158.188/order/'
-    PAYPAL_NOTIFY_URL = 'http://90.209.158.188/notifying/'
-    PAYPAL_CANCEL_RETURN = 'http://90.209.158.188/order/'
+    PAYPAL_RETURN_URL = 'http://90.213.146.220/accounts/profile/'
+    PAYPAL_NOTIFY_URL = 'http://90.213.146.220/notifying/'
+    PAYPAL_CANCEL_RETURN = 'http://90.213.146.220/accounts/profile/'
     
 else:
     PAYPAL_RECEIVER_EMAIL = 'causenaffectuk@hotmail.com'
-    PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/order/'
+    PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/accounts/profile/'
     PAYPAL_NOTIFY_URL = 'http://www.causenaffect.co.uk/notifying/'
-    PAYPAL_CANCEL_RETURN = 'http://www.causenaffect.co.uk/order/'
+    PAYPAL_CANCEL_RETURN = 'http://www.causenaffect.co.uk/accounts/profile/'
+
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',)
