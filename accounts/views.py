@@ -10,6 +10,7 @@ from accounts.forms import UserProfileForm
 from orders.models import Order
 from paypal.standard.ipn.models import PayPalIPN
 from basket import utils
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     if request.method == "POST":
@@ -33,6 +34,7 @@ def logoug_view(request):
     logout(request)
     return HttpResponseRedirect("/")
 
+@login_required(login_url="/accounts/login")
 def profile(request):
     user= request.user
     orders = Order.objects.filter(user=user)
