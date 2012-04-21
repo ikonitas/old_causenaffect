@@ -34,7 +34,7 @@ def download(request, orderline_pk, song_pk):
         with open(song.full_track.path, 'rb') as f:
             response = HttpResponse(f.read())
         response['Content-Type'] = "audio/mpeg3"
-        response["Content-Disposition"] = "attachment; filename = %s.mp3" % str(song.full_name)
+        response["Content-Disposition"] = "attachment; filename = %s.mp3" % str(song.full_name.replace(" ","_"))
         return response
     else:
         raise Http404
