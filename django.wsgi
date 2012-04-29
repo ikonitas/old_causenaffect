@@ -3,12 +3,12 @@ import sys
 import socket
 
 if socket.gethostname() == "ed":
-    activate_this = os.path.join("/www/sites/causenaffect/")
+    activate_this = os.path.join("/www/causenaffect/")
 
-    root = os.path.join(os.path.dirname(__file__),"/www/sites/causenaffect")
+    root = os.path.join(os.path.dirname(__file__),"/www/causenaffect")
     sys.path.insert(0, root)
-    sys.path.append("/www/sites/causenaffect/causenaffect/")
-    sys.path.append("/www/sites/causenaffect/lib/python2.7/site-packages/")
+    sys.path.append("/www/causenaffect/causenaffect/")
+    sys.path.append("/www/causenaffect/lib/python2.7/site-packages/")
     os.environ["DJANGO_SETTINGS_MODULE"] = "causenaffect.settings"
 
     import django.core.handlers.wsgi
