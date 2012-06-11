@@ -86,4 +86,4 @@ def forget(request):
                 error = True
                 return render_to_response("accounts/failed_email.html",{'error':error }, context_instance=RequestContext(request))
     else:
-        pass
+        return HttpResponseRedirect("/")
