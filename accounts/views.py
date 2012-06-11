@@ -1,10 +1,16 @@
+import random
+import string
+from django.core.mail import send_mail
+from django.conf import settings
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from accounts.models import UserProfile
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate 
+from django.contrib.auth import login as login_after_registration
+from django.contrib.auth.views import login
 from django.contrib import messages
 from accounts.forms import UserProfileForm
 from orders.models import Order
@@ -23,14 +29,14 @@ def register(request):
             messages.info(request, "Thanks for registering. You are now logged in.")
             new_user = authenticate(username=request.POST['username'],
                                     password=request.POST['password2'])
-            login(request, new_user)
+            login_after_registration(request, new_user)
             return HttpResponseRedirect("/events/")
 
     else:
         form = UserProfileForm()
     return render_to_response("accounts/register.html", {'form':form },context_instance=RequestContext(request))
 
-def logoug_view(request):
+def logout_view(request):
     logout(request)
     return HttpResponseRedirect("/")
 
@@ -59,3 +65,25 @@ def profile(request):
             user_songs.append(songs)
     
     return render_to_response("accounts/profile.html",{'orders':orders,'user_orders':user_orders,'orderlines':user_songs},context_instance=RequestContext(request))
+
+def mine_login(request, *args, **kwargs):
+    if request.method == "POST":
+        if not request.POST.get('remember',None):
+            request.session.set_expiry(0)
+    return login(request, *args, **kwargs)
+
+def forget(request):
+    if request.method == "POST":
+        if request.POST.get("email",""):
+            try:
+                user = UserProfile.objects.get(user__email=request.POST.get('email'))
+                new_password = "".join([random.choice(string.letters.lower()) for x in range(7)])
+                user.user.set_password(new_password)
+                user.user.save()
+                send_mail("CAUSENAFFECT your password", "Hi " + user.user.username + " this is your new password: " + new_password, settings.EMAIL_HOST_USER,[user.user.email], fail_silently=True)
+                return render_to_response("accounts/failed_email.html", context_instance=RequestContext(request))
+            except UserProfile.DoesNotExist:
+                error = True
+                return render_to_response("accounts/failed_email.html",{'error':error }, context_instance=RequestContext(request))
+    else:
+        pass

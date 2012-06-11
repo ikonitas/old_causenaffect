@@ -24,7 +24,7 @@ class Event(models.Model):
     body = models.TextField(validators=[MaxLengthValidator(230)],help_text="Please write more about event")
     author = models.ForeignKey(User)
     enable_comments = models.BooleanField(default=True)
-    slug = models.SlugField(help_text="Slug is auto generated from title so do not touch")
+    slug = models.SlugField(help_text="Slug is auto generated from title so do not touch", unique=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=LIVE_STATUS)
 
     def save(self, *args, **kwargs):

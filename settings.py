@@ -155,6 +155,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
      'slideshow.context_processors.images',
      'music.context_processors.categories',
      'basket.context_processors.basket_items',
+     'accounts.context_processors.login_form_processors',
      )
 
 INSTALLED_APPS = (

@@ -21,7 +21,7 @@
              </a>
          </div>
          {% endif %}
-         <div class="event_info"><p>INFO: {{ event.body|safe }}</p></div>
+         <div class="event_info"><p>INFO: {{ event.body|safe|truncatewords:26 }}</p></div>
          <div class="event_info_wrapper">
           <div class="event_date"><p>DATE: {{ event.event_date|date:'F j'}}</p></div>
           <div class="event_time"><p>TIME: {{ event.time|time:'H:i'}}</p></div>

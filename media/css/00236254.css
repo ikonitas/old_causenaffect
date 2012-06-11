@@ -276,6 +276,12 @@ footer{
   background-repeat: no-repeat;
   height: 150px;
 }
+.event_border_big{
+  font-size: 13px;
+  background-image: url("../img/event_detail.png");
+  background-repeat: no-repeat;
+  height: 466px;
+}
 .event_date{
   float: left;
   color: #66cccc;
@@ -483,7 +489,7 @@ footer{
 }
 
 .logos {
-  padding-top:162px;
+  padding-top:4px;
   padding-left: 16px;
   width: 310px;
   height: 74px;
@@ -951,6 +957,94 @@ tfoot .right {
   padding-right: 138px;
 }
 .errorlist {
-  color: red;
+  color: #fff;
   font-weight: bold;
 }
+#register_login form input[type="text"]:focus {
+  border-color:#CCEB00;
+  color:#CCC;
+}
+#register_login form input[type="text"] {
+  border: 1px solid #CCC;
+  border-radius: 16px;
+  color:#666;
+  width: 412px;
+  height:26px;
+  outline: none;
+  /*background: transparent url(../img/form.png) no-repeat top center;*/
+  padding: 2px 15px;
+  margin-bottom: 10px
+}
+#nav_login {
+  margin-left:14px;
+}
+#nav_login a {
+  background-image: url('../img/register_login_switch.png');
+  background-position: 0 0;
+  height:34px;
+  float:left;
+  display: block;
+  width:154px;
+}
+#nav_login #nav_register {
+  background-position: 154px 0px;
+  outline: none;
+}
+#nav_login #nav_signin {
+  outline: none;
+}
+#registration_form {
+  margin-top:4px;
+  margin-bottom:20px;
+}
+#registration_form input[type='text'] {
+  margin-left: 8px;
+}
+
+#registration_form input[type='password'] {
+  margin-left: 8px;
+}
+#registration_form input[type='submit'] {
+  color:transparent;
+  margin-left:88px;
+  border:none;
+  background: url('../img/signinbutton.png') no-repeat;
+  width: 80px;
+}
+#registration_form #register_button {
+  margin-left: 214px;
+}
+#registration_form .remember_me {
+  color: #5aa09b;
+  margin-left:14px;
+}
+#registration_form input[type='checkbox'] {
+  vertical-align: sub;
+  margin-left:8px;
+}
+.signin_button {
+  color: transparent;
+  margin-left: 88px;
+  border: none;
+  background: url('../img/signinbutton.png') no-repeat;
+  width: 80px;
+}
+.forgot_wrapper {
+  margin-left: 34px;
+  font-size: 16px;
+  color:#626262;
+}
+.forgot_wrapper a {
+  color:#626262;
+  text-decoration: none;
+}
+.register_profile {
+  text-align:center;
+}
+.register_profile a {
+  font-size:23px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration:none;
+}
+  

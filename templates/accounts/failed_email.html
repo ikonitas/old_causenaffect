@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="clear"></div>
+{% if error %}
+<p>Sorry your email does not exist in our database.</p>
+{% else %}
+<p>We have emailed you with you new password.</p>
+{% endif %}
+
+{% endblock %}
