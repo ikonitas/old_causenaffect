@@ -1,3 +1,5 @@
 *.swp
 *.swo
 *.pyc
+
+/www/causenaffect/causenaffect/media/music/
