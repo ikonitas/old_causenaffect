@@ -996,7 +996,7 @@ tfoot .right {
 }
 #registration_form {
   margin-top:4px;
-  margin-bottom:20px;
+  margin-bottom:30px;
 }
 #registration_form input[type='text'] {
   margin-left: 8px;
@@ -1007,10 +1007,12 @@ tfoot .right {
 }
 #registration_form input[type='submit'] {
   color:transparent;
-  margin-left:88px;
   border:none;
   background: url('../img/signinbutton.png') no-repeat;
   width: 80px;
+  height:24px;
+  float:right;
+  margin-right:14px;
 }
 #registration_form #register_button {
   margin-left: 214px;
@@ -1025,7 +1027,6 @@ tfoot .right {
 }
 .signin_button {
   color: transparent;
-  margin-left: 88px;
   border: none;
   background: url('../img/signinbutton.png') no-repeat;
   width: 80px;
