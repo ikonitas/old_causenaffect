@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="clear"></div>
-<div id="event" {% if event.body|length > 500 %} style="padding-bottom:200px;" {% endif %}>
+<div id="event" {% if event.body|length > 500 %} style="padding-bottom:300px;" {% endif %}>
              <div class="title">
              <a href="/events/{{ event.slug }}"><p>{{ event.title }}</p></a>
              </div>
