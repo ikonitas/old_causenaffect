@@ -1,6 +1,6 @@
 {% block content %}
 <div class="clear"></div>
-         <div id="event">
+         <div id="event" style="padding-bottom:200px;">
              <div class="title">
              <a href="/events/{{ event.slug }}"><p>{{ event.title }}</p></a>
              </div>
@@ -18,7 +18,7 @@
              </a>
          {% endif %}
          </div>
-         <div class="event_info"><p>INFO: {{ event.body|safe }}</p></div>
+         <div class="event_info" style="font-weight:bold"><p>INFO: {{ event.body|safe }}</p></div>
          <div class="event_info_wrapper">
           <div class="event_date"><p>DATE: {{ event.event_date|date:'F j'}}</p></div>
           <div class="event_time"><p>TIME: {{ event.time|time:'H:i'}}</p></div>

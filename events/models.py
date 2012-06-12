@@ -21,7 +21,7 @@ class Event(models.Model):
     price = models.CharField(max_length=10, help_text="Please provide a price withou &#163; sign")
     flayer = models.ImageField(upload_to="uploads/", blank=True, null=True)
     flayer_thumb = models.ImageField(upload_to="thumbs/",blank=True, null=True, editable=False)
-    body = models.TextField(validators=[MaxLengthValidator(230)],help_text="Please write more about event")
+    body = models.TextField(validators=[MaxLengthValidator(2230)],help_text="Please write more about event")
     author = models.ForeignKey(User)
     enable_comments = models.BooleanField(default=True)
     slug = models.SlugField(help_text="Slug is auto generated from title so do not touch", unique=True)
