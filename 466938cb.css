@@ -492,9 +492,10 @@ footer{
   padding-top:4px;
   padding-left: 16px;
   width: 310px;
-  height: 74px;
+  height: 28px;
   position:relative;
   overflow: hidden;
+  float:left;
 }
 
 .logos a {
