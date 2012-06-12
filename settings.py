@@ -75,7 +75,7 @@ MEDIA_ROOT = PROJECT_ROOT + '/media/'
 if socket.gethostname() == "ed": 
     MEDIA_URL = '/media/'
 else:
-    MEDIA_URL = "http://media.causenaffect.co.uk/" 
+    MEDIA_URL = "http://www.causenaffect.co.uk/media/" 
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
