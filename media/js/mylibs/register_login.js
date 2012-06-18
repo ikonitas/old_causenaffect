@@ -18,6 +18,6 @@
     $('.register').empty();
     $('#nav_signin').css('background-position','0px 0px');
     $('#nav_register').css('background-position','154px 0px');
-    $('.register').css('background','url("'+ MEDIA_URL +'/img/sign_in_bg.png")').append("<form id='registration_form' autocomplete='off' method='post' action='"+ url_login +"'> "+ csrf_token +" <input id='id_username' type='text' name='username' maxlength='30' placeholder='USERNAME' /> <input type='password' name='password' id='id_password' placeholder='PASSWORD' /> <br/> <span class='remember_me'>Remember me</span> <input type='checkbox' name='remember' checked='checked' />  <input class='button_signin' type='submit' value='Sign In' /> <input type='hidden' name='next' value='' /> </form> <span class='forgot_wrapper'><a href='#' id='forgot_password'>FORGOT YOUR PASSWORD?</a></span>");
+    $('.register').css('background','url("'+ MEDIA_URL +'/img/sign_in_bg.png")').append("<form id='registration_form' autocomplete='off' method='post' action='"+ url_login +"'> "+ csrf_token +" <input id='id_username' type='text' name='username' maxlength='30' placeholder='USERNAME' /> <input type='password' name='password' id='id_password' placeholder='PASSWORD' /> <br/><br/> <span class='remember_me'>Remember me</span> <input type='checkbox' name='remember' checked='checked' />  <input class='button_signin' type='submit' value='Sign In' /> <input type='hidden' name='next' value='' /> </form> <span class='forgot_wrapper'><a href='#' id='forgot_password'>FORGOT YOUR PASSWORD?</a></span>");
 
   });
