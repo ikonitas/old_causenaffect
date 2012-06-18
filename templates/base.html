@@ -90,11 +90,12 @@
         <a title="Sign In" id="nav_signin" href="login"></a>
         <a title="Register" id="nav_register" href="register"></a>
       </div>
-      <div style="margin-top:0px;margin-left:14px;float:left;width:307px;height:140px;background:url({{ MEDIA_URL}}img/register_bg.png) no-repeat;" class="register">
-        <form id="registration_form" method="post" action="{% url login %}">
+      <div class="register">
+        <form id="registration_form" autocomplete='off' method="post" action="{% url login %}">
           {% csrf_token %}
           <input id="id_username" type="text" name="username" maxlength="30" placeholder="USERNAME" />
           <input type="password" name="password" id="id_password" placeholder="PASSWORD" />
+          <br/>
           <br/>
           <span class="remember_me">Remember me</span>
           <input type="checkbox" name="remember" checked="checked"/>
@@ -190,6 +191,7 @@
     <script src="{{ MEDIA_URL}}sc/jquery.mCustomScrollbar.js"></script>
     <script src="{{ MEDIA_URL}}sc/jquery.ba-resize.min.js"></script>
     <script src="{{ MEDIA_URL}}sc/customScrollBarMobile.js"></script>
+    <script src="{{ MEDIA_URL}}js/mylibs/register_login.js"></script>
     <!-- END OF SCROLLBAR SCRIPTS -->
 
     {% endblock %}
@@ -220,7 +222,13 @@ function LoadNewContent(id,file){
   });
 }
 </script>
-
+<script>
+  var MEDIA_URL = "{{ MEDIA_URL }}";
+  var csrf_token = "{% csrf_token %}";
+  var url_login = "{% url login %}";
+  var forget_password = "{% url forget_password %}";
+  var auth_register = "{% url auth_register %}";
+</script>
 <script>
   $(document).ready(function(){
     $('.slide_images').cycle({
@@ -282,34 +290,6 @@ $(document).ready(function() {
       });
   });
 </script>
-<script>
-  $('#forgot_password').click(function(){
-    $('.register').empty();
-    $('.register').append("<form id='registration_form' method='post' action='{% url forget_password %} '> {% csrf_token %} <input style='margin-left:8px' id='id_email' type='text' name='email' maxlength='30' placeholder='Email Address' /> <input type='submit' value='Sign In' />");
-
-
-  });
-</script>
-<script>
-  $('#nav_register').click(function(e){
-    e.preventDefault();
-    $('.register').empty();
-    $('#nav_signin').css('background-position','0px 34px');
-    $('#nav_register').css('background-position','154px 34px');
-    $('.register').append("<form method='post' id='registration_form' action='{% url auth_register %}' style='margin-top:4px';>{% csrf_token %} <input style='margin-left:8px' id='id_username' type='text' name='username' maxlength='15' placeholder='USERNAME' /> <input id='id_email' type='text' name='email' maxlength='30' placeholder='EMAIL'/> <input type='password' name='password1' id='id_password1' placeholder='PASSWORD' /> <input type='password' name='password2' id='id_password2' placeholder='CONFIRM PASSWORD' /> <input id='register_button' type='submit' value='Register' /> <input type='hidden' name='next' value='{{ next }}' />");
-
-  }); 
-  $('#nav_signin').click(function(e){
-    e.preventDefault();
-    $('.register').empty();
-    $('#nav_signin').css('background-position','0px 0px');
-    $('#nav_register').css('background-position','154px 0px');
-    $('.register').append("<form id='registration_form' method='post' action='{% url login %}'> {% csrf_token %} <input id='id_username' type='text' name='username' maxlength='30' placeholder='USERNAME' /> <input type='password' name='password' id='id_password' placeholder='PASSWORD' /> <br/> <span class='remember_me'>Remember me</span> <input type='checkbox' name='remember' checked='checked' />  <input class='button_signin' type='submit' value='Sign In' /> <input type='hidden' name='next' value='' /> </form> <span class='forgot_wrapper'><a href='#' id='forgot_password'>FORGOT YOUR PASSWORD?</a></span>");
-
-  });
-
-</script>
-
 
     <!--[if lt IE 7 ]>
         <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

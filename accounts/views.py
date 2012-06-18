@@ -19,6 +19,7 @@ from basket import utils
 from django.contrib.auth.decorators import login_required
 
 def register(request):
+    import ipdb; ipdb.set_trace();
     if request.method == "POST":
         form = UserProfileForm(request.POST)
         if form.is_valid():

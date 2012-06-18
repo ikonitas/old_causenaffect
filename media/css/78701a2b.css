@@ -153,8 +153,8 @@ body {
 }
 .left_middle{
   width:329px;
-  height:210px;
-  background-image:url("../img/left_middle.jpg");
+  height:200px;
+  background:url("../img/left_middle.jpg") no-repeat;
   margin:0
 }
 
@@ -183,8 +183,8 @@ body {
 
 .left_bottom{
   width:329px;
-  height:210px;
-  background-image:url("../img/left_bottom.jpg");
+  height:220px;
+  background:url("../img/left_bottom.jpg") no-repeat;
 }
 #middle{
   float:left;
@@ -489,7 +489,7 @@ footer{
 }
 
 .logos {
-  padding-top:4px;
+  padding-top:10px;
   padding-left: 16px;
   width: 310px;
   height: 28px;
@@ -996,7 +996,7 @@ tfoot .right {
 }
 #registration_form {
   margin-top:4px;
-  margin-bottom:30px;
+  margin-bottom:26px;
 }
 #registration_form input[type='text'] {
   margin-left: 8px;
@@ -1010,12 +1010,13 @@ tfoot .right {
   border:none;
   background: url('../img/signinbutton.png') no-repeat;
   width: 80px;
-  height:24px;
+  height:23px;
   float:right;
   margin-right:14px;
 }
 #registration_form #register_button {
   margin-left: 214px;
+  background: url('../img/register_button.png') no-repeat;
 }
 #registration_form .remember_me {
   color: #5aa09b;
@@ -1049,4 +1050,17 @@ tfoot .right {
   text-align: center;
   text-decoration:none;
 }
-  
+input:-webkit-autofill {
+  background-color: transparent !important;
+
+}
+
+.left_bottom .register {
+  margin-top:0px;
+  margin-left:14px;
+  float:left;
+  width:307px;
+  height:140px;
+  background:url('../img/sign_in_bg.png') no-repeat;
+}
+
