@@ -38,7 +38,7 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/events/")
 
 @login_required(login_url="/accounts/login")
 def profile(request):
