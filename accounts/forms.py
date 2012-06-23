@@ -9,6 +9,9 @@ class UserProfileForm(forms.Form):
     password2 = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 
     def clean(self):
+        import ipdb; ipdb.set_trace();
+        if not self.cleaned_data.get('password2'):
+            raise forms.ValidationError("Please enter your password and confirm password.")
         if self.cleaned_data['password1'] != self.cleaned_data['password2']:
             raise forms.ValidationError("Passwords don't match")
 
