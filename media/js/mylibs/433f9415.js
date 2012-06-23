@@ -9,8 +9,8 @@
     $('.register').empty();
     $('.register').css('background','url("'+MEDIA_URL+'"img/register_bg.png');
     $('#nav_signin').css('background-position','0px 34px');
-    $('#nav_register').css('background-position','154px 34px');
-    $('.register').css('background','url("'+MEDIA_URL+'/img/register_bg.png")').append("<form method='post' id='registration_form' action='"+auth_register+"' style='margin-top:4px';>" + csrf_token +" <input style='margin-left:8px' id='id_username' type='text' name='username' maxlength='15' placeholder='USERNAME' /> <input id='id_email' type='text' name='email' maxlength='30' placeholder='EMAIL'/> <input type='password' name='password1' id='id_password1' placeholder='PASSWORD' /> <input type='password' name='password2' id='id_password2' placeholder='CONFIRM PASSWORD' /> <input id='register_button' type='submit' value='Register' /> <input type='hidden' name='next' value='{{ next }}' />");
+    $('#nav_register').css('background-position','153px 34px');
+    $('.register').css('background','url("'+MEDIA_URL+'/img/register_bg.png")').append("<form method='post' id='registration_form' action='"+auth_register+"' style='margin-top:6px';>" + csrf_token +" <input style='margin-left:8px' id='id_username' type='text' name='username' maxlength='15' placeholder='USERNAME' /> <input id='id_email' type='text' name='email' maxlength='30' placeholder='EMAIL'/> <input type='password' name='password1' id='id_password1' placeholder='PASSWORD' /> <input type='password' name='password2' id='id_password2' placeholder='CONFIRM PASSWORD' /> <input id='register_button' type='submit' value='Register' /> <input type='hidden' name='next' value='{{ next }}' />");
 
   }); 
   $('#nav_signin').click(function(e){

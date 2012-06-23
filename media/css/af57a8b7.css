@@ -490,7 +490,7 @@ footer{
 
 .logos {
   padding-top:10px;
-  padding-left: 16px;
+  padding-left: 20px;
   width: 310px;
   height: 28px;
   position:relative;
@@ -977,7 +977,7 @@ tfoot .right {
   margin-bottom: 10px
 }
 #nav_login {
-  margin-left:14px;
+  margin-left:21px;
 }
 #nav_login a {
   background-image: url('../img/register_login_switch.png');
@@ -995,7 +995,7 @@ tfoot .right {
   outline: none;
 }
 #registration_form {
-  margin-top:4px;
+  margin-top:6px;
   margin-bottom:26px;
 }
 #registration_form input[type='text'] {
@@ -1033,8 +1033,8 @@ tfoot .right {
   width: 80px;
 }
 .forgot_wrapper {
-  margin-left: 34px;
-  font-size: 16px;
+  margin-left: 52px;
+  font-size: 14px;
   color:#626262;
 }
 .forgot_wrapper a {
@@ -1043,12 +1043,25 @@ tfoot .right {
 }
 .register_profile {
   text-align:center;
+  margin-bottom:10px;
+  padding-left:38px;
 }
 .register_profile a {
   font-size:23px;
   font-weight: bold;
   text-align: center;
   text-decoration:none;
+}
+.register_logout {
+  background: url('../img/logout.png') no-repeat;
+  width:102px;
+  height:29px;
+  margin-left:132px;
+  margin-bottom:76px;
+}
+.register_logout a{
+  padding-left:102px;
+  padding-bottom:13px;
 }
 input:-webkit-autofill {
   background-color: transparent !important;
@@ -1057,7 +1070,7 @@ input:-webkit-autofill {
 
 .left_bottom .register {
   margin-top:0px;
-  margin-left:14px;
+  margin-left:21px;
   float:left;
   width:307px;
   height:140px;
