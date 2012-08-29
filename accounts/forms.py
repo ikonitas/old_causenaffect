@@ -27,3 +27,11 @@ class UserProfileForm(forms.Form):
         except User.DoesNotExist:
             pass
         return email
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username','')
+        user = User.objects.filter(username=username)
+        if user:
+            raise forms.ValidationError(
+                    'This username is already taken')
+        return user

@@ -38,7 +38,7 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect("/events/")
+    return HttpResponseRedirect("/")
 
 @login_required(login_url="/accounts/login")
 def profile(request):
@@ -86,4 +86,4 @@ def forget(request):
                 error = True
                 return render_to_response("accounts/failed_email.html",{'error':error }, context_instance=RequestContext(request))
     else:
-        return HttpResponseRedirect("/")
+        pass

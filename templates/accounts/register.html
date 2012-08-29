@@ -4,6 +4,8 @@
 {% endblock %}
 {% block content %}
 {% if form.errors %}
+        {{ form.email.errors }}
+        {{ form.username.errors }}
         {{ form.non_field_errors }}
 {% endif %}
 {% endblock %}
