@@ -21,6 +21,7 @@ class Event(models.Model):
     price = models.CharField(max_length=10, help_text="Please provide a price withou &#163; sign")
     flayer = models.ImageField(upload_to="uploads/", blank=True, null=True)
     flayer_thumb = models.ImageField(upload_to="thumbs/",blank=True, null=True, editable=False)
+    short_body = models.TextField(help_text="Short info about event")
     body = models.TextField(validators=[MaxLengthValidator(2230)],help_text="Please write more about event")
     author = models.ForeignKey(User)
     enable_comments = models.BooleanField(default=True)
@@ -36,19 +37,19 @@ class Event(models.Model):
                 #fb = facebook.Facebook(settings.FACEBOOK_API_KEY, settings.FACEBOOK_SECRET_KEY)
                 #fb.session_key=settings.FACEBOOK_SESSION_KEY
                 #fb.status.set(self.title + " " + self.get_full_url())
-                
+
                 #TWITTER
                 api = twitter.Api(consumer_key=settings.TWITTER_CONSUMER_KEY, consumer_secret=settings.TWITTER_CONSUMER_SECRET, access_token_key=settings.TWITTER_ACCESS_TOKEN_KEY, access_token_secret=settings.TWITTER_ACCESS_TOKEN_SECRET)
                 api.PostUpdate(self.title +" " + self.get_full_url() )
 
         elif self.pk is None:
             #FACEBOOK
-            #fb = facebook.Facebook(settings.FACEBOOK_API_KEY, settings.FACEBOOK_SECRET_KEY) 
-            #fb.session_key=settings.FACEBOOK_SESSION_KEY                                    
+            #fb = facebook.Facebook(settings.FACEBOOK_API_KEY, settings.FACEBOOK_SECRET_KEY)
+            #fb.session_key=settings.FACEBOOK_SESSION_KEY
             #fb.status.set(self.title + " " + self.get_full_url())                                       #TWITTER
             api = twitter.Api(consumer_key=settings.TWITTER_CONSUMER_KEY, consumer_secret=settings.TWITTER_CONSUMER_SECRET, access_token_key=settings.TWITTER_ACCESS_TOKEN_KEY, access_token_secret=settings.TWITTER_ACCESS_TOKEN_SECRET)
             api.PostUpdate("NEW EVENT   " + self.title +" " + self.get_full_url() )
-                
+
         #Flayer resizing image
         super(Event, self).save()
         size = (120,120)
@@ -111,13 +112,13 @@ class Event(models.Model):
                 (a, b) = os.path.split(self.flayer.name)
                 self.flayer_thumb = a + '/thumbs/' + b
                 super(Event, self).save()
-    
+
     def get_thumbnail_path(self):
         (head, tail) = os.path.split(self.flayer.path)
         if not os.path.isdir(head + '/thumbs'):
             os.mkdir(head + '/thumbs')
         return head + '/thumbs/' + tail
-    
+
     class Meta:
         verbose_name_plural = "Entries"
         ordering = ['-event_date']

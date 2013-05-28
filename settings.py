@@ -72,10 +72,10 @@ MEDIA_ROOT = PROJECT_ROOT + '/media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-if socket.gethostname() == "ed": 
+if socket.gethostname() == "ed":
     MEDIA_URL = '/media/'
 else:
-    MEDIA_URL = "http://www.causenaffect.co.uk/media/" 
+    MEDIA_URL = "http://www.causenaffect.co.uk/media/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -261,7 +261,7 @@ if socket.gethostname() == "ed":
     PAYPAL_RETURN_URL = 'http://90.213.146.220/accounts/profile/'
     PAYPAL_NOTIFY_URL = 'http://90.213.146.220/notifying/'
     PAYPAL_CANCEL_RETURN = 'http://90.213.146.220/accounts/profile/'
-    
+
 else:
     PAYPAL_RECEIVER_EMAIL = 'causenaffectuk@hotmail.com'
     PAYPAL_RETURN_URL = 'http://www.causenaffect.co.uk/accounts/profile/'
