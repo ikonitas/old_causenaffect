@@ -26,7 +26,7 @@ urlpatterns += patterns('paypal.standard.ipn.views',
         url(r'^notifying/$', 'ipn', name="paypal-ipn"),
         )
 
-if settings.HOSTNAME == "ed":
+if settings.DEBUG:
     urlpatterns += patterns('',
             (r'^media/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.MEDIA_ROOT,'show_indexes':True}),
             )

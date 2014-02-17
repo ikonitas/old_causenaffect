@@ -3,3 +3,5 @@
 *.pyc
 
 media/music/
+settings/local.py
+kanedb
